@@ -16,6 +16,8 @@
 
 	programs = {
 		firefox.enable = true;
+		lazygit.enable = true;
+		btop.enable = true;
 	};
 
 	home.homeDirectory = "/home/tanikaze";
