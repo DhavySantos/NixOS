@@ -9,7 +9,7 @@
 	stylix.cursor.name = "macOS-White";
 	stylix.cursor.size = 24;
 
-	stylix.image = ./files/wallpaper.png;
+	stylix.image = ../../files/wallpaper.png;
 
 	stylix.enable = true;
 }
