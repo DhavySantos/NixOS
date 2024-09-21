@@ -14,6 +14,7 @@
 		nixosConfigurations.tsugumori = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; };
 			modules = [ ./hosts/tsugumori ];
+			system = "x86_64-linux";
 		};
 
 		homeConfigurations.tanikaze = home-manager.lib.homeManagerConfiguration {
