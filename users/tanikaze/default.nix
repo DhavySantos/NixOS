@@ -1,4 +1,4 @@
-{ ... } : {
+{ pkgs, ... } : {
 	imports = [
 		./configs/alacritty
 		./configs/hyprland
@@ -9,6 +9,14 @@
 		./configs/zsh
 		./configs/git
 	];
+
+	home.packages = with pkgs; [
+		vesktop
+	];
+
+	programs = {
+		firefox.enable = true;
+	};
 
 	home.homeDirectory = "/home/tanikaze";
 	home.stateVersion = "24.11";
