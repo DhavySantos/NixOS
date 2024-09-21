@@ -3,6 +3,12 @@
 		inputs.sops-nix.nixosModules.sops
 	];
 
+	### ENVIRONMENT SECTION
+	environment.systemPackages = with pkgs; [
+		vulkan-radeon vulkan-headers vulkan-tools
+		pulsemixer pulseaudio wl-clipboard
+	];
+
 	### DISPLAY MANAGER SECTION
 	services.displayManager.autoLogin.user = "tanikaze";
 	services.displayManager.autoLogin.enable = true;
