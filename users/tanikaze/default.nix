@@ -20,6 +20,7 @@
 	programs = {
 		firefox.enable = true;
 		lazygit.enable = true;
+		yazi.enable = true;
 		btop.enable = true;
 	};
 
