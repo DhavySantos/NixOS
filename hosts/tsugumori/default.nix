@@ -76,6 +76,9 @@
 	networking.networkmanager.enable = true;
 	networking.hostName = "tsugumori";
 
+	networking.firewall.enable = false;
+	networking.nat.enable = false;
+
 	### BOOT SECTION
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.systemd-boot.enable = true;
