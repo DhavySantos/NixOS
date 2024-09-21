@@ -9,6 +9,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		stylix = {
+			url = "github:danth/stylix/master";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		sops-nix = {
 			url = "github:Mic92/sops-nix/master";
 			inputs.nixpkgs.follows = "nixpkgs";
