@@ -15,5 +15,10 @@
 			specialArgs = { inherit inputs; };
 			modules = [ ./hosts/tsugumori ];
 		};
+
+		homeConfigurations.tanikaze = home-manager.lib.homeManagerConfiguration {
+			extraSpecialArgs = { inherit inputs; };
+			modules = [ ./users/tanikaze ];
+		};
 	};
 }
