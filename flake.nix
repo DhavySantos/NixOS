@@ -48,5 +48,7 @@
 			modules = [ ./users/tanikaze ];
 			inherit pkgs;
 		};
+
+		devShells.x86_64-linux.rust = (import ./shells/rust.nix { inherit pkgs; });
 	};
 }
