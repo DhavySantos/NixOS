@@ -3,6 +3,7 @@
 		./configs/alacritty
 		./configs/hyprland
 		./configs/mangohud
+		./configs/xremap
 		./configs/neovim
 		./configs/waybar
 		./configs/stylix
