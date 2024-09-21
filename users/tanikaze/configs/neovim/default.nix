@@ -19,7 +19,7 @@ in
 		recursive = true;
 	};
 
-	# stylix.targets.neovim.enable = false;
+	stylix.targets.neovim.enable = false;
 
 	programs.neovim.extraLuaConfig = ''
 		require("tanikaze.core.options");
