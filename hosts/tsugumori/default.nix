@@ -16,6 +16,7 @@
 
 	programs = {
 		nix-ld.enable = true;
+		steam.enable = true;
 		nh.enable = true;
 	};
 
