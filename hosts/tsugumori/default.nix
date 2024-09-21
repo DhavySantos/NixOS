@@ -8,7 +8,7 @@
 	environment.systemPackages = with pkgs; [
 		vulkan-loader vulkan-headers vulkan-tools
 		pulsemixer pulseaudio wl-clipboard
-		lact
+		lact unzip unrar
 	];
 
 	fonts.packages = [
