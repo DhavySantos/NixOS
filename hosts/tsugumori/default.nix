@@ -1,5 +1,6 @@
 { ... } : {
 	### NETWORKING SECTION
+	networking.networkmanager.enable = true;
 	networking.hostname = "tsugumori";
 
 	### BOOT SECTION
