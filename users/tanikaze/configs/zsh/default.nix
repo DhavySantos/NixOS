@@ -14,4 +14,12 @@
 
 		envExtra = "export ZSH_COMPDUMP=\"\${ZDOTDIR:-\${ZSH}}/.zcompdump-\${SHORT_HOST}-\${ZSH_VERSION}\"";
 	};
+
+	programs.fzf.enable = true;
+	programs.fzf.enableZshIntegration = true;
+
+	programs.zoxide.enableZshIntegration = true;
+	programs.zoxide.options = [ "--cmd=cd" ];
+	programs.zoxide.enable = true;
+
 }
