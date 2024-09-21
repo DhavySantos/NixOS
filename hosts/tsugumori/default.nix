@@ -9,6 +9,11 @@
 		pulsemixer pulseaudio wl-clipboard
 	];
 
+	programs = {
+		nix-ld.enable = true;
+		nh.enable = true;
+	};
+
 	### DISPLAY MANAGER SECTION
 	services.displayManager.autoLogin.user = "tanikaze";
 	services.displayManager.autoLogin.enable = true;
