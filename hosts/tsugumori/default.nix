@@ -3,6 +3,17 @@
 		inputs.sops-nix.nixosModules.sops
 	];
 
+	### DISPLAY MANAGER SECTION
+	services.displayManager.autoLogin.user = "tanikaze";
+	services.displayManager.autoLogin.enable = true;
+
+	systemd.services."autovt@tty1".enable = false;
+	systemd.services."getty@tty1".enable = false;
+
+	services.displayManager.sddm.enable = true;
+	programs.hyprland.xwayland.enable = true;
+	programs.hyprland.enable = true;
+
 	### PIPEWIRE SECTION
 	hardware.pulseaudio.enable = false;
 	security.rtkit.enable = true;
