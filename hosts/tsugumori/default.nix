@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... } : {
+{ inputs, pkgs, lib, ... } : {
 	imports = [
 		inputs.sops-nix.nixosModules.sops
 		./hardware.nix
@@ -69,6 +69,7 @@
 	};
 
 	### NETWORKING SECTION
+	networking.nameservers = lib.mkForce [ "1.1.1.1" "8.8.8.8" ];
 	networking.networkmanager.enable = true;
 	networking.hostName = "tsugumori";
 
