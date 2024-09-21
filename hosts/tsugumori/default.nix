@@ -66,7 +66,7 @@
 
 	### NETWORKING SECTION
 	networking.networkmanager.enable = true;
-	networking.hostname = "tsugumori";
+	networking.hostName = "tsugumori";
 
 	### BOOT SECTION
 	boot.loader.efi.canTouchEfiVariables = true;
