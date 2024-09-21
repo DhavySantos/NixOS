@@ -7,6 +7,7 @@
 		./configs/neovim
 		./configs/waybar
 		./configs/stylix
+		./configs/tmux
 		./configs/rofi
 		./configs/zsh
 		./configs/git
