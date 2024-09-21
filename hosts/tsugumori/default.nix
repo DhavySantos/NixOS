@@ -40,6 +40,8 @@
 	};
 
 	### USERS SECTION
+	security.sudo.wheelNeedsPassword = false;
+
 	users.users.tanikaze = {
 		isNormalUser = true;
 		description = "tanikaze";
