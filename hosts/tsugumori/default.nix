@@ -1,4 +1,8 @@
-{ ... } : {
+{ inputs, ... } : {
+	imports = [
+		inputs.sops-nix.nixosModules.sops
+	];
+
 	### USERS SECTION
 	users.users.tanikaze = {
 		isNormalUser = true;
