@@ -15,16 +15,28 @@
 		};
 	};
 
-	outputs = { nixpkgs, home-manager, ... } @inputs : {
+	outputs = { nixpkgs, home-manager, ... } @inputs :
+
+	let
+
+	pkgs = import nixpkgs {
+		config.allowUnfree = true;
+		system = "x86_64-linux";
+	};
+
+	in
+
+	{
 		nixosConfigurations.tsugumori = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; };
 			modules = [ ./hosts/tsugumori ];
-			system = "x86_64-linux";
+			inherit pkgs;
 		};
 
 		homeConfigurations.tanikaze = home-manager.lib.homeManagerConfiguration {
 			extraSpecialArgs = { inherit inputs; };
 			modules = [ ./users/tanikaze ];
+			inherit pkgs;
 		};
 	};
 }
