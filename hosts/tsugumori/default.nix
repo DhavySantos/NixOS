@@ -69,6 +69,9 @@
 	};
 
 	### NETWORKING SECTION
+	networking.nftables.ruleset = builtins.readFile ./files/nftables.ini;
+	networking.nftables.enable = true;
+
 	networking.nameservers = lib.mkForce [ "1.1.1.1" "8.8.8.8" ];
 	networking.networkmanager.enable = true;
 	networking.hostName = "tsugumori";
