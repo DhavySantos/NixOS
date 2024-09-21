@@ -18,6 +18,11 @@
 			url = "github:Mic92/sops-nix/master";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		xremap = {
+			url = "github:xremap/nix-flake/master";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, home-manager, ... } @inputs :
