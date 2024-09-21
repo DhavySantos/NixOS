@@ -1,4 +1,8 @@
-{ pkgs, ... } : {
+{ pkgs, inputs, ... } : {
+	imports = [
+		inputs.stylix.homeManagerModules.stylix
+	];
+
 	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
 	stylix.cursor.package = pkgs.apple-cursor;
