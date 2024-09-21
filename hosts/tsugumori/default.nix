@@ -1,4 +1,11 @@
 { ... } : {
+	### USERS SECTION
+	users.users.tanikaze = {
+		isNormalUser = true;
+		description = "tanikaze";
+		extraGroups = [ "wheel" ];
+	};
+
 	### NETWORKING SECTION
 	networking.networkmanager.enable = true;
 	networking.hostname = "tsugumori";
