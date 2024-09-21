@@ -5,6 +5,7 @@
 		./configs/mangohud
 		./configs/neovim
 		./configs/waybar
+		./configs/stylix
 		./configs/rofi
 		./configs/zsh
 		./configs/git
