@@ -97,6 +97,11 @@
 	networking.firewall.enable = false;
 	networking.nat.enable = false;
 
+	services.udev.extraRules = ''
+		SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="18:c0:4d:f4:a7:a6", NAME="wan0"
+		SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:e0:4c:68:06:61", NAME="lan0"
+	'';
+
 	### BOOT SECTION
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.systemd-boot.enable = true;
