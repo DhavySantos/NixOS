@@ -3,8 +3,8 @@
 let
 
 	neovim = pkgs.fetchFromGitHub {
-		sha256 = "L/TX53R+pWmsrx4E1AbDTyWrNubKfSkfNpQtlN6CeN0=";
-		rev = "7c2aec6922e585b150ab354325677268db4a80e6";
+		sha256 = "n0zsYDNqmBWAqvIAGJn0i9jMPUiKkA0TKOcD5ra2lJU=";
+		rev = "71fc83766ca80e678baa3ce78416fb6003a1e3d9";
 		owner = "DhavySantos";
 		repo = "Neovim";
 	};
