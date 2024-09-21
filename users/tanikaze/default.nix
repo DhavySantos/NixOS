@@ -7,6 +7,7 @@
 		./configs/waybar
 		./configs/rofi
 		./configs/zsh
+		./configs/git
 	];
 
 	home.homeDirectory = "/home/tanikaze";
