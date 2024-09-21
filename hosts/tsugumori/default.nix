@@ -10,6 +10,10 @@
 		pulsemixer pulseaudio wl-clipboard
 	];
 
+	fonts.packages = [
+		( import ../../pkgs/caskaydiacove.nix { inherit pkgs; })
+	];
+
 	programs = {
 		nix-ld.enable = true;
 		nh.enable = true;
