@@ -1,6 +1,7 @@
 { inputs, pkgs, ... } : {
 	imports = [
 		inputs.sops-nix.nixosModules.sops
+		./hardware.nix
 	];
 
 	### ENVIRONMENT SECTION
