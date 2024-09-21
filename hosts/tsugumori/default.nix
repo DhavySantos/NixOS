@@ -8,6 +8,7 @@
 	environment.systemPackages = with pkgs; [
 		vulkan-loader vulkan-headers vulkan-tools
 		pulsemixer pulseaudio wl-clipboard
+		lact
 	];
 
 	fonts.packages = [
@@ -23,6 +24,15 @@
 	time.timeZone = "America/Sao_Paulo";
 	i18n.defaultLocale = "en_US.UTF-8";
 	console.keyMap = "br-abnt2";
+
+	### SERVICES SECTION
+	systemd.services.lact = {
+		enable = true;
+		after = ["multi-user.target"];
+		wantedBy = ["multi-user.target"];
+		description = "AMDGPU Control Daemon";
+		serviceConfig.ExecStart = "${pkgs.lact}/bin/lact daemon";
+	};
 
 	### DISPLAY MANAGER SECTION
 	services.displayManager.autoLogin.user = "tanikaze";
