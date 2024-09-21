@@ -51,6 +51,7 @@
 	services.xserver.xkb.variant = "abnt2";
 	services.xserver.xkb.layout = "br";
 	services.xserver.enable = true;
+	hardware.uinput.enable = true;
 
 	hardware.graphics = {
 		extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
@@ -59,14 +60,20 @@
 		enable = true;
 	};
 
-	### USERS SECTION
-	security.sudo.wheelNeedsPassword = false;
 
+	### USERS SECTION
 	users.users.tanikaze = {
 		isNormalUser = true;
 		description = "tanikaze";
 		extraGroups = [ "wheel" ];
 	};
+
+	users.groups.uinput.members = [ "tanikaze" ];
+	users.groups.input.members = [ "tanikaze" ];
+
+	### SECURITY SECTION
+	security.sudo.wheelNeedsPassword = false;
+	security.polkit.enable = true;
 
 	### NETWORKING SECTION
 	networking.nftables.ruleset = builtins.readFile ./files/nftables.ini;
