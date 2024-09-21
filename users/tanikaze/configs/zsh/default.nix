@@ -22,4 +22,18 @@
 	programs.zoxide.options = [ "--cmd=cd" ];
 	programs.zoxide.enable = true;
 
+	programs.starship.enableZshIntegration = true;
+	programs.starship.enable = true;
+	programs.starship.settings = {
+		format = "$os$directory$git_branch$package$rust$fill\n $character";
+		add_newline = true;
+
+		character.success_symbol = "[󱞩](bold green)";
+		character.error_symbol = "[󱞩](bold red)";
+
+		fill.symbol = " ";
+
+		os.disabled = false;
+		os.symbols.NixOS = " ";
+	};
 }
