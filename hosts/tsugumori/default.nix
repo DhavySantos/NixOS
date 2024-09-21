@@ -6,7 +6,7 @@
 
 	### ENVIRONMENT SECTION
 	environment.systemPackages = with pkgs; [
-		vulkan-radeon vulkan-headers vulkan-tools
+		vulkan-loader vulkan-headers vulkan-tools
 		pulsemixer pulseaudio wl-clipboard
 	];
 
