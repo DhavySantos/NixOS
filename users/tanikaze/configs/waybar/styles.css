@@ -1,0 +1,66 @@
+window.mainBar#waybar * {
+	font-family: "CaskaydiaCove Nerd Font";
+	font-weight : bold;
+	font-style: italic;
+	font-size: 13px;
+
+	padding: 0px;
+	margin: 0px;
+
+	background: @base00;
+}
+
+tooltip {
+	font-family: "CaskaydiaCove Nerd Font";
+	font-weight : bold;
+	font-style: italic;
+
+	border: 1px solid @base05;
+	background: @base00;
+}
+
+#cpu, #memory, #pulseaudio, #clock, #window, #tray {
+	color: @base05;
+	margin: 0px 4px;
+}
+
+#window {
+	color: @base0D;
+}
+
+#workspaces button {
+	padding: 0px;
+	margin: 0px;
+}
+
+#workspaces button.active {
+	color: @base0D;
+}
+
+#workspaces button.urgent {
+	color: @base08;
+}
+
+#tray {
+	margin: 0;
+	padding: 4;
+}
+
+#tray * {
+	margin-left: 8px;
+}
+
+#group-minimized {
+	border-left: solid;
+	border-left-width: 0.5;
+}
+
+#custom-expand {
+	min-width: 25px;
+	padding: 4px;
+}
+
+#custom-system {
+	font-size: 32px;
+	color: @base0D;
+}
