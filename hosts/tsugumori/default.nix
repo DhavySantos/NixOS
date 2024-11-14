@@ -8,7 +8,7 @@
 	environment.systemPackages = with pkgs; [
 		vulkan-loader vulkan-headers vulkan-tools
 		pulsemixer pulseaudio wl-clipboard
-		lact unzip unrar
+		lact unzip unrar home-manager
 	];
 
 	fonts.packages = [
@@ -16,9 +16,11 @@
 	];
 
 	programs = {
+		dconf.enable = true;
 		nix-ld.enable = true;
 		steam.enable = true;
 		nh.enable = true;
+		firefox.enable = true;
 	};
 
 	time.timeZone = "America/Sao_Paulo";
