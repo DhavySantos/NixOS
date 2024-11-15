@@ -1,17 +1,15 @@
 { config, lib, ... } : let
 
-color = config.lib.stylix.colors;
+colors = config.lib.stylix.colors;
 
-styles = with config.lib.stylix.colors; ''
-
+styles = with colors; ''
 @define-color base00 #${base00}; @define-color base01 #${base01}; @define-color base02 #${base02}; @define-color base03 #${base03};
 @define-color base04 #${base04}; @define-color base05 #${base05}; @define-color base06 #${base06}; @define-color base07 #${base07};
 
 @define-color base08 #${base08}; @define-color base09 #${base09}; @define-color base0A #${base0A}; @define-color base0B #${base0B};
 @define-color base0C #${base0C}; @define-color base0D #${base0D}; @define-color base0E #${base0E}; @define-color base0F #${base0F};
 
-${builtins.readFile ./styles.css}
-
+${builtins.readFile ../files/waybar.css}
 '';
 
 in {
@@ -29,8 +27,8 @@ in {
 		modules-left = [
 			"custom/system"
 			"hyprland/workspaces"
-			"clock#time"
-			"clock#date"
+			# "clock#timeg"
+			# "clock#date"
 		];
 
 		modules-center = [
@@ -56,27 +54,27 @@ in {
 		};
 
 		"memory" = {
-			format = "<span color=\"#${color.base0D}\">   </span>{used:0.1f}GiB ";
+			format = "<span color=\"#${colors.base0A}\">   </span>{used:0.1f}GiB ";
 			interval = 1;
 		};
 
 		"cpu" = {
-			format = "<span color=\"#${color.base0D}\">   </span>{usage}%";
+			format = "<span color=\"#${colors.base0A}\">   </span>{usage}%";
 			interval = 1;
 		};
 
 		"pulseaudio" = {
-			format = "<span color=\"#${color.base0D}\">   </span>{volume}%";
+			format = "<span color=\"#${colors.base0A}\">   </span>{volume}%";
 		};
 
 		"clock#time" = {
 			interval = 1;
-			format = "<span color=\"#${color.base0D}\">  </span>{:%H:%M:%S}";
+			format = "<span color=\"#${colors.base0A}\">  </span>{:%H:%M:%S}";
 		};
 
 		"clock#date" = {
 			interval = 60;
-			format = "<span color=\"#${color.base0D}\">  </span>{:%d/%m/%Y}";
+			format = "<span color=\"#${colors.base0A}\">  </span>{:%d/%m/%Y}";
 		};
 
 		"tray" = {
@@ -102,6 +100,6 @@ in {
 		"custom/system" = {
 			format = "  ";
 		};
-
 	};
 }
+

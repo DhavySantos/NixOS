@@ -1,22 +1,22 @@
-{ config, ... } : {
+{ pkgs, config, ... } : {
 	programs.zsh = {
 		syntaxHighlighting.enable = true;
 		autosuggestion.enable = true;
 		enableCompletion = true;
 		enable = true;
 
-		history.path = "${config.xdg.dataHome}/.zsh/history";
-		history.size = 10000;
-
-
-		oh-my-zsh.plugins = [ "git" "fzf" ];
-		oh-my-zsh.enable = true;
+    shellAliases = {
+      ls = "${pkgs.eza}/bin/eza";
+      ip = "ip -c";
+    };
 
 		envExtra = "export ZSH_COMPDUMP=\"\${ZDOTDIR:-\${ZSH}}/.zcompdump-\${SHORT_HOST}-\${ZSH_VERSION}\"";
+		history.path = "${config.xdg.dataHome}/.zsh/history";
+		history.size = 10000;
 	};
 
-	programs.fzf.enable = true;
 	programs.fzf.enableZshIntegration = true;
+	programs.fzf.enable = true;
 
 	programs.zoxide.enableZshIntegration = true;
 	programs.zoxide.options = [ "--cmd=cd" ];

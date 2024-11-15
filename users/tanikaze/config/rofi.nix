@@ -1,8 +1,6 @@
-{ lib, config, ... } :
+{ lib, config, ... } : let
 
-let
-
-colors = with config.lib.stylix.colors; ''
+style = with config.lib.stylix.colors; ''
 * {
 	background:     #${base01}FF;
 	background-alt: #${base02}FF;
@@ -11,13 +9,11 @@ colors = with config.lib.stylix.colors; ''
 	active:         #${base0C}FF;
 	urgent:         #${base08}FF;
 }
+
+${builtins.readFile ../files/rofi.rasi}
 '';
 
-style = builtins.readFile ./style.rasi;
-
-in
-
-{
+in {
 	programs.rofi.enable = true;
 	programs.rofi.extraConfig = {
 		modi = "drun";
@@ -31,7 +27,8 @@ in
 	programs.rofi.theme = lib.mkForce "style.rasi";
 
 	home.file.".config/rofi/style.rasi" = {
-		text = "${colors}${style}";
+		text = "${style}";
 		recursive = true;
 	};
 }
+

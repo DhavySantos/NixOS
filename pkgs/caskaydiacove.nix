@@ -15,4 +15,3 @@ pkgs.stdenv.mkDerivation {
 		tar -xf $src -C $out/share/fonts/truetype
 	'';
 }
-

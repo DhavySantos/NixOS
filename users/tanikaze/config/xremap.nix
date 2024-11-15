@@ -1,7 +1,5 @@
 { inputs, ... } : {
-	imports = [
-		inputs.xremap.homeManagerModules.default
-	];
+	imports = [ inputs.xremap.homeManagerModules.default ];
 
 	services.xremap.watch = true;
 	services.xremap.config.keymap = [{

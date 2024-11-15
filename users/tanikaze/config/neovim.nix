@@ -1,17 +1,13 @@
-{ pkgs, ... } :
+{ pkgs, ... } : let
 
-let
+neovim = pkgs.fetchFromGitHub {
+  sha256 = "sha256-XtRgnbHj6I96F0ilEHg+C3g0x/J8q97QeQTchmHloTE=";
+	rev = "ae24d3e6d374c96616c82cb2dd16dbbdf3e53075";
+	owner = "DhavySantos";
+	repo = "Neovim";
+};
 
-	neovim = pkgs.fetchFromGitHub {
-		sha256 = "n0zsYDNqmBWAqvIAGJn0i9jMPUiKkA0TKOcD5ra2lJU=";
-		rev = "71fc83766ca80e678baa3ce78416fb6003a1e3d9";
-		owner = "DhavySantos";
-		repo = "Neovim";
-	};
-
-in
-
-{
+in {
 	home.packages = with pkgs; [ ripgrep ];
 
 	home.file.".config/nvim/lua/tanikaze" = {
@@ -22,9 +18,7 @@ in
 	stylix.targets.neovim.enable = false;
 
 	programs.neovim.extraLuaConfig = ''
-		require("tanikaze.core.options");
-		require("tanikaze.core.lazynvim");
-		require("tanikaze.core.colorscheme");
+		require("tanikaze");
 	'';
 
 	programs.neovim = {
