@@ -18,7 +18,7 @@
   ### ENVIRONMENT SECTION
   environment.systemPackages = with pkgs; [
     vulkan-loader vulkan-headers vulkan-tools
-      rocmPackages.rocm-smi
+    rocmPackages.rocm-smi home-manager
   ];
 
   fonts.packages = [
