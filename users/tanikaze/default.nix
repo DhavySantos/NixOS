@@ -15,6 +15,7 @@
   home.stateVersion = "24.11";
   home.username = "tanikaze";
 
+  home.sessionVariables.EDITOR = "nvim";
   stylix.targets.neovim.enable = false;
   programs.neovim.enable = true;
 
