@@ -15,6 +15,9 @@
   home.stateVersion = "24.11";
   home.username = "tanikaze";
 
+  stylix.targets.neovim.enable = false;
+  programs.neovim.enable = true;
+
   programs.git.extraConfig.user.email = "dhavyzhn@gmail.com"; 
   programs.git.extraConfig.init.defaultBranch = "maim";
   programs.git.extraConfig.user.name = "Dhavy Santos"; 
