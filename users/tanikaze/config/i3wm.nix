@@ -17,7 +17,7 @@ in {
     bars = [];
 
     keybindings = {
-      "Print" = "exec ${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/xclip -selection clipboard -t image/png";
+      "Print" = "exec ${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png";
       "${mod}+Return" = "exec ${pkgs.kitty}/bin/kitty -o font_size=11";
       "${mod}+r" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons";
       "${mod}+Shift+x" = "kill";
