@@ -30,6 +30,7 @@
   home.packages = with pkgs; [
     vesktop google-chrome
     path-of-building
+    spotify
   ];
 
   nixpkgs.config.allowUnfree = true;
