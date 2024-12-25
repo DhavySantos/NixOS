@@ -1,10 +1,17 @@
 { pkgs, ... } : let
+
 mod = "Mod4";
 wallpaper = pkgs.fetchurl {
   url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
   hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
 };
+
 in {
+  services.picom.backend = "glx";
+  services.picom.enable = true;
+  services.picom.shadow= false;
+  services.picom.vSync = true;
+
   xsession.windowManager.i3.enable = true;
   xsession.windowManager.i3.config = {
     defaultWorkspace = "workspace number 1";
@@ -70,22 +77,20 @@ in {
     };
 
     startup = [
-    { command = "${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-A-0 --mode \"1920x1080\""; }
-    { command = "${pkgs.polybar}/bin/polybar mybar -c ~/.config/polybar/config.ini"; }
-    { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; }
+      { command = "${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-A-0 --mode \"1920x1080\""; }
+      { command = "${pkgs.polybar}/bin/polybar mybar -c ~/.config/polybar/config.ini"; }
+      { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; }
     ];
   };
 
   xsession.windowManager.i3.extraConfig = ''
-    for_window [class="awakened-poe-trade"] floating enable, resize set 1920 1080, move center, move to workspace 0, raise
-    for_window [class="steam_apps_238960"] floating enable, resize set 1920 1080, move center, move to workspace 0, lower
+    for_window [class="awakened-poe-trade"] floating enable, move to workspace 0
 
     for_window [class="steam_apps*"] move workspace number 0
     for_window [class="gamescope"] move workspace number 0
 
-    for_window [class="vesktop"] move absolute position 10 10
-    for_window [class="vesktop"] resize set 1900 1035
-    for_window [class="vesktop"] move scratchpad
-    for_window [class="vesktop"] sticky enable
+    for_window [class="(discord|vesktop)"] move absolute position 10 10
+    for_window [class="(discord|vesktop)"] resize set 1900 1035
+    for_window [class="(discord|vesktop)"] sticky enable
   '';
 }
