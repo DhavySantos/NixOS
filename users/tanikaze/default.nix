@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... } : {
+{ pkgs, ... } : {
 
   imports = [
     ./config/mangohud.nix
@@ -28,6 +28,7 @@
   programs.btop.enable = true;
 
   home.packages = with pkgs; [
+    ( import ../../packages/awakened_poe_trade.nix { inherit pkgs; } )
     vesktop google-chrome
     path-of-building
     spotify
