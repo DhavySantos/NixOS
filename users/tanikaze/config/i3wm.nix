@@ -84,13 +84,8 @@ in {
   };
 
   xsession.windowManager.i3.extraConfig = ''
+    for_window [class="(vesktop|discord)"] move absolute position 10 10, resize set 1900 1035, move scratchpad, sticky enable
     for_window [class="awakened-poe-trade"] floating enable, move to workspace 0
-
-    for_window [class="steam_apps*"] move workspace number 0
-    for_window [class="gamescope"] move workspace number 0
-
-    for_window [class="(discord|vesktop)"] move absolute position 10 10
-    for_window [class="(discord|vesktop)"] resize set 1900 1035
-    for_window [class="(discord|vesktop)"] sticky enable
+    for_window [class="(steam_apps*|gamescope)"] move workspace number 0
   '';
 }
