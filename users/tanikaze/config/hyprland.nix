@@ -32,7 +32,7 @@ in {
     input.kb_layout = "br";
 
     bind = [
-      "$MOD1 ,RETURN, exec, ${pkgs.kitty}/bin/kitty -o shell ${pkgs.tmux}/bin/tmux new -A -s Dash"
+      "$MOD1, RETURN, exec, ${pkgs.kitty}/bin/kitty -o shell ${pkgs.tmux}/bin/tmux new -A -s Dash"
       ",PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
       "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show-icons -show drun"
       "$MOD1, J, togglesplit"
@@ -73,7 +73,7 @@ in {
       "nofocus,class:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       "suppressevent maximize, class:.*"
 
-      "workspace special:magic, class:veskstop"
+      "workspace special:magic, class:vesktop"
       "workspace special:magic, class:discord"
       "workspace special:magic, class:Spotify"
 
