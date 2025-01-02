@@ -1,0 +1,45 @@
+* {
+  font-family: "CaskaydiaCove Nerd Font";
+  font-weight: bold;
+  font-size: 12px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#clock {
+  color: @text;
+  margin-right: 4px;
+}
+
+#tray {
+  margin-right: 4px;
+}
+
+#window {
+
+}
+
+#workspaces button {
+
+}
+
+#workspaces button.empty {
+
+}
+
+#workspaces button.visible {
+  color: @text;
+}
+
+#workspaces button.active {
+  color: @blue;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
+#custom-system {
+  margin-left: 8px;
+  color: @blue;
+}
