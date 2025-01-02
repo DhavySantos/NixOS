@@ -1,4 +1,22 @@
-{ pkgs, ... } : {
+{ pkgs, ... } : let
+
+wallpaper = pkgs.fetchurl {
+  url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
+  hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
+};
+
+in {
+  services.hyprpaper.enable = true;
+  services.hyprpaper.settings = {
+    preload = [
+      ( builtins.toString wallpaper )
+    ];
+
+    wallpapers = [
+      "HDMI-A-1,${builtins.toString wallpaper}"
+    ];
+  };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     "$MOD1" = "SUPER";
@@ -11,10 +29,12 @@
       "$MOD1, mouse:273, resizewindow"
     ];
 
+    input.kb_layout = "br";
+
     bind = [
       "$MOD1 ,RETURN, exec, ${pkgs.kitty}/bin/kitty -o shell ${pkgs.tmux}/bin/tmux new -A -s Dash"
       ",PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
-      "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
+      "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show-icons -show drun"
       "$MOD1, J, togglesplit"
       "$MOD2, X, killactive"
 
@@ -47,6 +67,19 @@
       "$MOD2, 8, movetoworkspace, 8"
       "$MOD2, 9, movetoworkspace, 9"
       "$MOD2, Q, movetoworkspace, 10"
+    ];
+
+    windowrulev2 = [
+      "nofocus,class:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+      "suppressevent maximize, class:.*"
+
+      "workspace special:magic, class:veskstop"
+      "workspace special:magic, class:discord"
+      "workspace special:magic, class:Spotify"
+
+      "workspace 10,class:gamescope"
+      "fullscreen,class:gamescope"
+      "monitor 1,class:gamescope"
     ];
   };
 }
