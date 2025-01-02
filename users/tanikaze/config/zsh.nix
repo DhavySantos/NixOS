@@ -6,6 +6,7 @@
     enable = true;
 
     shellAliases = {
+      nix-shell = "nix-shell --run ${pkgs.zsh}/bin/zsh";
       ls = "${pkgs.eza}/bin/eza";
       ip = "ip -4 -c";
     };
