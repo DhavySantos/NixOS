@@ -29,10 +29,14 @@ in {
       "$MOD1, mouse:273, resizewindow"
     ];
 
+    animations.enabled = false;
     input.kb_layout = "br";
 
     bind = [
       "$MOD1, RETURN, exec, ${pkgs.kitty}/bin/kitty -o shell ${pkgs.tmux}/bin/tmux new -A -s Dash"
+      "$MOD2, N, exec, ${pkgs.google-chrome}/bin/google-chrome-stable --incognito"
+      "$MOD1, N, exec, ${pkgs.google-chrome}/bin/google-chrome-stable"
+
       ",PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
       "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show-icons -show drun"
       "$MOD1, J, togglesplit"
