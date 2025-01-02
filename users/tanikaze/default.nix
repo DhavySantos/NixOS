@@ -2,6 +2,7 @@
 
   imports = [
     ./config/mangohud.nix
+    ./config/hyprland.nix
     ./config/polybar.nix
     ./config/stylix.nix
     ./config/xremap.nix
@@ -26,11 +27,12 @@
 
   programs.lazygit.enable = true;
   programs.btop.enable = true;
+  programs.yazi.enable = true;
 
   home.packages = with pkgs; [
     ( import ../../packages/awakened_poe_trade.nix { inherit pkgs; } )
-    vesktop google-chrome
-    path-of-building
+    path-of-building prismlauncher
+    vesktop google-chrome discord
     spotify
   ];
 
