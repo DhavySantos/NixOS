@@ -1,13 +1,17 @@
 { pkgs, ... } : {
 
   imports = [
-    ./config/mangohud.nix
     ./config/hyprland.nix
+    ./config/i3wm.nix
+
     ./config/polybar.nix
+    ./config/waybar.nix
+
+    ./config/mangohud.nix
     ./config/stylix.nix
     ./config/xremap.nix
+
     ./config/kitty.nix
-    ./config/i3wm.nix
     ./config/tmux.nix
     ./config/zsh.nix
   ];
