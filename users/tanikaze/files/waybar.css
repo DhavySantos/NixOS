@@ -6,17 +6,27 @@
   margin: 0px;
 }
 
+window#waybar {
+  background: @background;
+}
+
 #clock {
+  background: @background-alt;
+  padding: 0px 6px;
   color: @text;
-  margin-right: 4px;
 }
 
 #tray {
-  margin-right: 4px;
+  padding: 0px 6px;
 }
 
 #window {
+  padding: 0px 12px;
+}
 
+#workspaces {
+  background: @background;
+  padding: 0px 6px;
 }
 
 #workspaces button {
@@ -40,6 +50,8 @@
 }
 
 #custom-system {
+  background: @background-alt;
   margin-left: 8px;
+  padding: 0px 6px;
   color: @blue;
 }
