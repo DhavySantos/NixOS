@@ -1,10 +1,44 @@
 { pkgs, ... } : {
   virtualisation.docker.daemon.settings.iptables = false;
-  virtualisation.docker.daemon.settings.bridge = "none";
   virtualisation.docker.enable = true;
 
   virtualisation.oci-containers.backend = "docker";
   virtualisation.oci-containers.containers = {
+    vaultwarden = {
+      image = "vaultwarden/server:latest";
+      hostname = "vaultwarden";
+
+      volumes = [
+        "vaultwarden:/data"
+      ];
+
+      extraOptions = [
+        "--network=docker1"
+        "--ip=172.18.0.2"
+      ];
+    };
+
+    nextcloud = {
+      image = "linuxserver/nextcloud:latest";
+      hostname = "nextcloud";
+
+      environment = {
+        TZ = "America/Sao_Paulo";
+        PGID = "1000";
+        PUID = "1000";
+      };
+
+      volumes = [
+        "/mnt/hitachi/nextcloud/.config:/config"
+        "/mnt/hitachi/nextcloud/data:/data"
+      ];
+
+      extraOptions = [
+        "--network=docker1"
+        "--ip=172.18.0.3"
+      ];
+    };
+
     jellyfin = {
       image = "linuxserver/jellyfin:latest";
       hostname = "jellyfin";
@@ -17,8 +51,8 @@
 
       extraOptions = [
         "--device=/dev/dri:/dev/dri"
-        "--network=docker0"
-        "--ip=172.17.1.1"
+        "--network=docker1"
+        "--ip=172.18.1.1"
       ];
     };
 
@@ -39,8 +73,8 @@
       };
 
       extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.1.2"
+        "--network=docker1"
+        "--ip=172.18.1.2"
       ];
     };
 
@@ -61,8 +95,8 @@
       };
 
       extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.1.3"
+        "--network=docker1"
+        "--ip=172.18.1.3"
       ];
     };
 
@@ -81,8 +115,8 @@
       };
 
       extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.1.4"
+        "--network=docker1"
+        "--ip=172.18.1.4"
       ];
     };
 
@@ -97,8 +131,8 @@
       };
 
       extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.1.5"
+        "--network=docker1"
+        "--ip=172.18.1.5"
       ];
     };
 
@@ -118,27 +152,13 @@
       };
 
       extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.1.6"
-      ];
-    };
-
-    vaultwarden = {
-      image = "vaultwarden/server:latest";
-      hostname = "vaultwarden";
-
-      volumes = [
-        "vaultwarden:/data"
-      ];
-
-      extraOptions = [
-        "--network=docker0"
-        "--ip=172.17.0.2"
+        "--network=docker1"
+        "--ip=172.18.1.6"
       ];
     };
   };
 
-  systemd.services."docker-network-docker0" = {
+  systemd.services."docker-network-docker1" = {
     serviceConfig.Type = "oneshot";
 
     after = [ "docker.service" ];
@@ -153,8 +173,9 @@
     ];
 
     script = ''
-      ${pkgs.docker}/bin/docker network inspect docker0 > /dev/null 2>&1 || ${pkgs.docker}/bin/docker network create \
-      --subnet 172.17.0.0/16 docker0
+      ${pkgs.docker}/bin/docker network inspect docker1 > /dev/null 2>&1 || ${pkgs.docker}/bin/docker network create \
+      --opt com.docker.network.bridge.name=docker1 \
+      --subnet 172.18.0.0/16 docker1
     '';
   };
 }
