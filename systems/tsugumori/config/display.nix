@@ -22,7 +22,12 @@
   services.xserver.enable = true;
   hardware.uinput.enable = true;
 
+  environment.variables = {
+    ROC_ENABLE_PRE_VEGA = "1";
+  };
+
   hardware.graphics = {
+    extraPackages = with pkgs; [ rocmPackages.clr.icd ];
     enable32Bit = true;
     enable = true;
   };
