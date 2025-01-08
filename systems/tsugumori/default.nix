@@ -1,11 +1,11 @@
 { pkgs, inputs, ... } : {
   imports = [
     inputs.disko.nixosModules.disko
-      ./config/hardware.nix
-      ./config/pipewire.nix
-      ./config/display.nix
-      ./config/network.nix
-      ./disko.nix
+    ./config/hardware.nix
+    ./config/pipewire.nix
+    ./config/display.nix
+    ./config/network.nix
+    ./disko.nix
   ];
 
   ### USERS SECTION
@@ -19,10 +19,7 @@
   environment.systemPackages = with pkgs; [
     vulkan-loader vulkan-headers vulkan-tools
     rocmPackages.rocm-smi home-manager
-  ];
-
-  fonts.packages = [
-    ( import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; } )
+    rustc rustfmt cargo rust-analyzer
   ];
 
   programs = {
@@ -41,9 +38,19 @@
   };
 
   powerManagement.cpuFreqGovernor = "performance";
+
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "br-abnt2";
+  zramSwap.enable = true;
+
+  ### SERVICES SECTION
+  services.openssh.enable = true;
+  services.openssh.ports = [ 22 ];
+  services.openssh.settings = {
+    PasswordAuthentication = true;
+    AllowUsers = [ "tanikaze" ];
+  };
 
   ### SECURITY SECTION
   security.sudo.wheelNeedsPassword = false;
