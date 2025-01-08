@@ -1,10 +1,10 @@
 { config, lib, ... } : let
   colors = with config.lib.stylix.colors; ''
-    @define-color background #${base01};
     @define-color background-alt #${base02};
+    @define-color background #${base01};
 
-    @define-color foreground #${base07};
     @define-color foreground-alt #${base04};
+    @define-color foreground #${base07};
     @define-color text #${base07};
 
     @define-color yellow #${base0A};
