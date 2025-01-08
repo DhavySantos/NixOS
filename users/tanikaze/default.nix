@@ -2,42 +2,31 @@
 
   imports = [
     ./config/hyprland.nix
-    ./config/i3wm.nix
-
-    ./config/polybar.nix
-    ./config/waybar.nix
-
-    ./config/mangohud.nix
-    ./config/stylix.nix
-    ./config/xremap.nix
-
-    ./config/kitty.nix
-    ./config/tmux.nix
-    ./config/zsh.nix
+    ./config/theme.nix
   ];
 
   home.homeDirectory = "/home/tanikaze";
   home.stateVersion = "24.11";
   home.username = "tanikaze";
 
-  home.sessionVariables.EDITOR = "nvim";
-  stylix.targets.neovim.enable = false;
-  programs.neovim.enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
-  programs.git.extraConfig.user.email = "dhavyzhn@gmail.com"; 
-  programs.git.extraConfig.init.defaultBranch = "maim";
-  programs.git.extraConfig.user.name = "Dhavy Santos"; 
-  programs.git.enable = true;
+  programs.git.extraConfig = {
+    user.email = "dhavysantos@gmail.com";
+    user.name = "Dhavy Santos";
+    init.defaultBranch = "main";
+  };
 
-  programs.lazygit.enable = true;
-  programs.btop.enable = true;
-  programs.yazi.enable = true;
+  programs = {
+    lazygit.enable = true;
+    btop.enable = true;
+    yazi.enable = true;
+  };
 
   home.packages = with pkgs; [
-    ( import ../../packages/awakened_poe_trade.nix { inherit pkgs; } )
-    path-of-building prismlauncher
-    vesktop google-chrome discord
-    spotify
+    vesktop google-chrome spotify
   ];
 
   nixpkgs.config.allowUnfree = true;
