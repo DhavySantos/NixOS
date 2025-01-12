@@ -14,9 +14,11 @@
   home.username = "tanikaze";
 
   home.sessionVariables = {
+    LD_PRELOAD = "";
     EDITOR = "nvim";
   };
 
+  programs.git.enable = true;
   programs.git.extraConfig = {
     user.email = "dhavysantos@gmail.com";
     user.name = "Dhavy Santos";
@@ -25,13 +27,16 @@
 
   programs = {
     lazygit.enable = true;
+    neovim.enable = true;
     btop.enable = true;
     yazi.enable = true;
   };
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     vesktop google-chrome spotify
-  ];
+    droidcam nodejs yarn
+    rpcs3
+  ]);
 
   nixpkgs.config.allowUnfree = true;
 }
