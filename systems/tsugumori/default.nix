@@ -17,13 +17,11 @@
   };
 
   ### ENVIRONMENT SECTION
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     vulkan-loader vulkan-headers vulkan-tools
     rocmPackages.rocm-smi home-manager
-    rustc rustfmt cargo rust-analyzer
-    wineWowPackages.stable cmake
-    winetricks amdgpu_top
-  ];
+    wineWowPackages.stable
+  ]);
 
   fonts.packages = [
     ( import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; })
