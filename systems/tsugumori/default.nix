@@ -5,6 +5,7 @@
     ./config/pipewire.nix
     ./config/display.nix
     ./config/network.nix
+    ./config/docker.nix
     ./disko.nix
   ];
 
@@ -20,21 +21,20 @@
     vulkan-loader vulkan-headers vulkan-tools
     rocmPackages.rocm-smi home-manager
     rustc rustfmt cargo rust-analyzer
+    wineWowPackages.stable cmake
+    winetricks amdgpu_top
+  ];
+
+  fonts.packages = [
+    ( import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; })
   ];
 
   programs = {
     gamescope.enable = true;
-    gamemode.enable = true;
     nix-ld.enable = true;
     steam.enable = true;
     dconf.enable = true;
     nh.enable = true;
-  };
-
-  programs.gamemode.settings = {
-    general = {
-      renice = 10;
-    };
   };
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -59,6 +59,10 @@
   ### BOOT SECTION
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
+
+  boot.tmp.tmpfsSize = "100%";
+  boot.tmp.cleanOnBoot = true;
+  boot.tmp.useTmpfs = true;
 
   ### NIX CONFIGURATION SECTION
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
