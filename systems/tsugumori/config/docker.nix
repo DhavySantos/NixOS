@@ -18,27 +18,6 @@
       ];
     };
 
-    nextcloud = {
-      image = "linuxserver/nextcloud:latest";
-      hostname = "nextcloud";
-
-      environment = {
-        TZ = "America/Sao_Paulo";
-        PGID = "1000";
-        PUID = "1000";
-      };
-
-      volumes = [
-        "/mnt/hitachi/nextcloud/.config:/config"
-        "/mnt/hitachi/nextcloud/data:/data"
-      ];
-
-      extraOptions = [
-        "--network=docker1"
-        "--ip=172.18.0.3"
-      ];
-    };
-
     jellyfin = {
       image = "linuxserver/jellyfin:latest";
       hostname = "jellyfin";
@@ -67,9 +46,9 @@
       ];
 
       environment = {
-        "TZ" = "America/Sao_Paulo";
-        "PGID" = "1000";
-        "PUID" = "1001";
+        TZ = "America/Sao_Paulo";
+        PGID = "26";
+        PUID = "1000";
       };
 
       extraOptions = [
@@ -89,9 +68,9 @@
       ];
 
       environment = {
-        "TZ" = "America/Sao_Paulo";
-        "PGID" = "1000";
-        "PUID" = "1001";
+        TZ = "America/Sao_Paulo";
+        PGID = "26";
+        PUID = "1000";
       };
 
       extraOptions = [
@@ -109,9 +88,9 @@
       ];
 
       environment = {
-        "TZ" = "America/Sao_Paulo";
-        "PGID" = "1000";
-        "PUID" = "1001";
+        TZ = "America/Sao_Paulo";
+        PGID = "26";
+        PUID = "1000";
       };
 
       extraOptions = [
@@ -125,9 +104,9 @@
       hostname = "flaresolverr";
 
       environment = {
-        "TZ" = "America/Sao_Paulo";
-        "PGID" = "1000";
-        "PUID" = "1001";
+        TZ = "America/Sao_Paulo";
+        PGID = "26";
+        PUID = "1000";
       };
 
       extraOptions = [
@@ -146,9 +125,9 @@
       ];
 
       environment = {
-        "TZ" = "America/Sao_Paulo";
-        "PGID" = "1000";
-        "PUID" = "1001";
+        TZ = "America/Sao_Paulo";
+        PGID = "26";
+        PUID = "1000";
       };
 
       extraOptions = [
