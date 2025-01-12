@@ -33,8 +33,8 @@
 
   home.packages = (with pkgs; [
     vesktop google-chrome spotify
-    droidcam nodejs yarn
-    rpcs3
+    droidcam nodejs yarn unrar
+    p7zip unzip rpcs3
   ]);
 
   nixpkgs.config.allowUnfree = true;
