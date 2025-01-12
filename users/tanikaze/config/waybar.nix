@@ -24,6 +24,11 @@ in {
     modules-center = [ "hyprland/window" ];
     modules-right = [ "tray" "clock" ];
 
+    "hyprland/workspaces" = {
+      format = "{icon}";
+      format-icons."10" = "󰊗 ";
+    };
+
     "tray" = {
       icon-size = 16;
       spacing = 4;
