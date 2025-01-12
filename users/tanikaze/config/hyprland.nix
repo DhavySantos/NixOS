@@ -9,8 +9,8 @@ in {
     wallpapers = [ "HDMI-A-1,${builtins.toString wallpaper}" ];
     preload = [ ( builtins.toString wallpaper ) ];
   };
-
-  window.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.settings = {
     "$MOD1" = "SUPER";
     "$MOD2" = "SUPER SHIFT";
 
@@ -31,6 +31,7 @@ in {
 
       ",PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
       "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show-icons -show drun"
+      "$MOD2, F, togglefloating"
       "$MOD1, J, togglesplit"
       "$MOD2, X, killactive"
 
@@ -38,11 +39,6 @@ in {
       "$MOD1, a, movefocus, l"
       "$MOD1, s, movefocus, d"
       "$MOD1, d, movefocus, r"
-
-      "$MOD2, w, move, u"
-      "$MOD2, a, move, l"
-      "$MOD2, s, move, d"
-      "$MOD2, d, move, r"
 
       "$MOD2, apostrophe, movetoworkspace, special:magic"
       "$MOD1, apostrophe, togglespecialworkspace, magic"
@@ -71,14 +67,12 @@ in {
     ];
 
     windowrulev2 = [
-      "nofocus,class:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-      "suppressevent maximize, class:.*"
+      "nofocus, class:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
+      "suppressevent maximize, noshadow, class:.*"
 
+      "workspace 10, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+)$"
       "workspace special:magic, class:^(discord|vesktop|Spotify)$"
 
-      "workspace 10,class:^(gamescope|steam_app*)$"
-      "fullscreen,class:^(gamescope|steam_app*)$"
-      "monitor 1,class:^(gamescope|steam_app*)$"
     ];
   };
 }
