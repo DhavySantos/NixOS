@@ -14,7 +14,6 @@
   home.username = "tanikaze";
 
   home.sessionVariables = {
-    LD_PRELOAD = "";
     EDITOR = "nvim";
   };
 
