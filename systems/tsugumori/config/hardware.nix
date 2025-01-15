@@ -28,6 +28,12 @@
 		fsType = "ext4";
 	};
 
+	fileSystems."/mnt/toshiba" = lib.mkForce {
+		device = "/dev/disk/by-id/ata-TOSHIBA_HDWD120_Y831YZJAS-part1";
+		options = [ "defaults" "nofail"];
+		fsType = "ext4";
+	};
+
 	fileSystems."/boot" = lib.mkForce {
 		device = "/dev/disk/by-id/nvme-NVME_SSD_512GB_GSMD22A0900736-part1";
 		options = [ "fmask=0022" "dmask=0022" ];
