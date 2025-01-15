@@ -9,19 +9,19 @@ in {
     wallpapers = [ "HDMI-A-1,${builtins.toString wallpaper}" ];
     preload = [ ( builtins.toString wallpaper ) ];
   };
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
-    "$MOD1" = "SUPER";
     "$MOD2" = "SUPER SHIFT";
+    "$MOD1" = "SUPER";
 
-    monitor = "HDMI-A-1, 1920x1080, 0x0, 1";
+    monitor = "HDMI-A-2, 1920x1080, 0x0, 1";
 
     bindm = [
-      "$MOD1, mouse:272, movewindow"
       "$MOD1, mouse:273, resizewindow"
+      "$MOD1, mouse:272, movewindow"
     ];
 
-    animations.enabled = false;
     input.kb_layout = "br";
 
     bind = [
@@ -72,7 +72,6 @@ in {
 
       "workspace 10, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+)$"
       "workspace special:magic, class:^(discord|vesktop|Spotify)$"
-
     ];
   };
 }
