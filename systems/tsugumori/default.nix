@@ -5,13 +5,13 @@
     ./config/pipewire.nix
     ./config/display.nix
     ./config/network.nix
-    ./config/docker.nix
+    ./config/docker
     ./disko.nix
   ];
 
   ### USERS SECTION
   users.users.tanikaze = {
-    extraGroups = [ "wheel" "uinput" "input" "gamemode"];
+    extraGroups = [ "wheel" "uinput" "input" "gamemode" ];
     description = "tanikaze";
     isNormalUser = true;
   };
@@ -19,8 +19,7 @@
   ### ENVIRONMENT SECTION
   environment.systemPackages = (with pkgs; [
     vulkan-loader vulkan-headers vulkan-tools
-    rocmPackages.rocm-smi home-manager
-    wineWowPackages.stable
+    home-manager
   ]);
 
   fonts.packages = [
@@ -29,14 +28,20 @@
 
   programs = {
     gamescope.enable = true;
-    nix-ld.enable = true;
+    gamemode.enable = true;
     steam.enable = true;
     dconf.enable = true;
     nh.enable = true;
   };
 
-  powerManagement.cpuFreqGovernor = "performance";
+  programs.gamemode.settings = {
+    general = {
+      renice = 10;
+    };
+  };
 
+  powerManagement.cpuFreqGovernor = "performance";
+  environment.pathsToLink = [ "/share/zsh" ];
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "br-abnt2";
