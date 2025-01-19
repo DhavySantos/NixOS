@@ -15,7 +15,34 @@ in {
     "$MOD2" = "SUPER SHIFT";
     "$MOD1" = "SUPER";
 
-    monitor = "HDMI-A-2, 1920x1080, 0x0, 1";
+    monitor = [
+      "HDMI-A-2, modeline 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync, 0x0, 1"
+      "HDMI-A-1, 1920x1080, 0x1080, 1"
+    ];
+
+    workspace = [
+      "1, monitor:HDMI-A-1, "
+      "2, monitor:HDMI-A-1, "
+      "3, monitor:HDMI-A-1, "
+      "4, monitor:HDMI-A-1, "
+      "5, monitor:HDMI-A-1, "
+      "6, monitor:HDMI-A-1, "
+      "7, monitor:HDMI-A-1, "
+      "8, monitor:HDMI-A-1, "
+      "9, monitor:HDMI-A-1, "
+      "10, monitor:HDMI-A-1, "
+
+      "11, monitor:HDMI-A-2, "
+      "12, monitor:HDMI-A-2, "
+      "13, monitor:HDMI-A-2, "
+      "14, monitor:HDMI-A-2, "
+      "15, monitor:HDMI-A-2, "
+      "16, monitor:HDMI-A-2, "
+      "17, monitor:HDMI-A-2, "
+      "18, monitor:HDMI-A-2, "
+      "19, monitor:HDMI-A-2, "
+      "20, monitor:HDMI-A-2, "
+    ];
 
     bindm = [
       "$MOD1, mouse:273, resizewindow"
@@ -64,6 +91,28 @@ in {
       "$MOD2, 8, movetoworkspace, 8"
       "$MOD2, 9, movetoworkspace, 9"
       "$MOD2, Q, movetoworkspace, 10"
+
+      "$MOD1, F1, workspace, 11"
+      "$MOD1, F2, workspace, 12"
+      "$MOD1, F3, workspace, 13"
+      "$MOD1, F4, workspace, 14"
+      "$MOD1, F5, workspace, 15"
+      "$MOD1, F6, workspace, 16"
+      "$MOD1, F7, workspace, 17"
+      "$MOD1, F8, workspace, 18"
+      "$MOD1, F9, workspace, 19"
+      "$MOD1, F10, workspace, 20"
+
+      "$MOD2, F1, movetoworkspace, 11"
+      "$MOD2, F2, movetoworkspace, 12"
+      "$MOD2, F3, movetoworkspace, 13"
+      "$MOD2, F4, movetoworkspace, 14"
+      "$MOD2, F5, movetoworkspace, 15"
+      "$MOD2, F6, movetoworkspace, 16"
+      "$MOD2, F7, movetoworkspace, 17"
+      "$MOD2, F8, movetoworkspace, 18"
+      "$MOD2, F9, movetoworkspace, 19"
+      "$MOD2, F10, movetoworkspace, 20"
     ];
 
     windowrulev2 = [
