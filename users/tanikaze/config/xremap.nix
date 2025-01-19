@@ -2,6 +2,7 @@
   imports = [ inputs.xremap.homeManagerModules.default ];
 
   services.xremap.watch = true;
+  services.xremap.withWlroots = true;
   services.xremap.config.keymap = [{
     name = "default";
     remap = {
@@ -15,6 +16,7 @@
 
     application.not = [
       "steam_app*"
+      "gamescope"
     ];
   }];
 }
