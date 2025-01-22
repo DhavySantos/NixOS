@@ -14,9 +14,9 @@
     vulkan-loader vulkan-headers vulkan-tools
   ]);
 
-  fonts.packages = (with pkgs;[
-    cascadia-code
-  ]);
+  fonts.packages = [
+    (import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; })
+  ];
 
   programs = {
     gamescope.enable = true;
