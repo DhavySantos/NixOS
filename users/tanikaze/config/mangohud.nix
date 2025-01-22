@@ -4,8 +4,13 @@
   programs.mangohud.settings = {
     background_alpha = lib.mkForce 0.0;
     table_columns = 1;
-    frame_timing = 0;
+
+    frame_timing = 1;
+    frametime = 1;
+    gpu_temp = 1;
+    cpu_temp = 1;
+
+    font_size = 12;
     horizontal = 1;
-    frametime = 0;
   };
 }

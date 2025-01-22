@@ -12,7 +12,7 @@
     @define-color red #${base08};
   '';
 in {
-  programs.waybar.style = lib.mkForce ''${colors}${builtins.readFile ../files/waybar.css}'';
+  programs.waybar.style = lib.mkForce ''${colors}${builtins.readFile ../../files/waybar.css}'';
   programs.waybar.enable = true;
 
   programs.waybar.settings.main = {

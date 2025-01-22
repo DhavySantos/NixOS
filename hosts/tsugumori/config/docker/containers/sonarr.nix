@@ -3,9 +3,9 @@
   hostname = "sonarr";
 
   volumes = [
-    "/mnt/toshiba/jellyfin/configs/sonarr:/config"
-    "/mnt/toshiba/jellyfin/downloads:/downloads"
-    "/mnt/toshiba/jellyfin/shows:/shows"
+    "/mnt/toshiba/containers/jellyfin/configs/sonarr:/config"
+    "/mnt/toshiba/containers/jellyfin/downloads:/downloads"
+    "/mnt/toshiba/containers/jellyfin/shows:/shows"
   ];
 
   environment = {

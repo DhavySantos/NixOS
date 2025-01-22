@@ -15,6 +15,7 @@
       "docker-prowlarr.service"
       "docker-flaresolverr.service"
       "docker-transmission.service"
+      "docker-factorio.service"
     ];
 
     script = ''
@@ -25,11 +26,13 @@
   };
 
   virtualisation.oci-containers.containers = {
-    transmission = import ./transmission.nix;
-    flaresolverr = import ./flaresolverr.nix;
-    jellyfin = import ./jellyfin.nix;
-    prowlarr = import ./prowlarr.nix;
-    sonarr = import ./sonarr.nix;
-    radarr = import ./radarr.nix;
+    jellyfin = import ./containers/jellyfin.nix; # 172.18.1.1
+    sonarr = import ./containers/sonarr.nix; # 172.18.1.2
+    radarr = import ./containers/radarr.nix; # 172.18.1.3
+    prowlarr = import ./containers/prowlarr.nix; # 172.18.1.4
+    flaresolverr = import ./containers/flaresolverr.nix; # 172.18.1.5
+    transmission = import ./containers/transmission.nix; # 172.18.1.6
+    vaultwarden = import ./containers/vaultwarden.nix; # 192.18.1.7
+    factorio = import ./containers/factorio.nix; # 172.18.2.1
   };
 }

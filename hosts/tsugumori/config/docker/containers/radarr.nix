@@ -3,9 +3,9 @@
   hostname = "radarr";
 
   volumes = [
-    "/mnt/toshiba/jellyfin/configs/radarr:/config"
-    "/mnt/toshiba/jellyfin/downloads:/downloads"
-    "/mnt/toshiba/jellyfin/movies:/movies"
+    "/mnt/toshiba/containers/jellyfin/configs/radarr:/config"
+    "/mnt/toshiba/containers/jellyfin/downloads:/downloads"
+    "/mnt/toshiba/containers/jellyfin/movies:/movies"
   ];
 
   environment = {

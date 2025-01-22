@@ -3,7 +3,7 @@
   hostname = "prowlarr";
 
   volumes = [
-    "/mnt/toshiba/jellyfin/configs/prowlarr:/config"
+    "/mnt/toshiba/containers/jellyfin/configs/prowlarr:/config"
   ];
 
   environment = {
