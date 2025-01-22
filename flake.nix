@@ -2,9 +2,8 @@
   description = "NixOS Configuration Flake";
   inputs = {
     home-manager.url = "github:Nix-Community/home-manager/release-24.11";
+    xremap.url = "github:xremap/nix-flake/release-24-.11";
     nixpkgs.url = "github:NixOS/NixPkgs/release-24.11";
-    disko.url = "github:Nix-Community/disko";
-    xremap.url = "github:xremap/nix-flake";
     stylix.url = "github:danth/stylix";
   };
 
@@ -18,16 +17,18 @@
   in
 
   {
-    nixosConfigurations.tsugumori = nixpkgs.lib.nixosSystem  {
-      specialArgs = { inherit inputs; };
-      modules = [ ./systems/tsugumori ];
-      inherit pkgs;
-    };
+    nixosConfigurations = {
+      tsugumori = nixpkgs.lib.nixosSystem  {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/tsugumori ];
+        inherit pkgs;
+      };
 
-    homeConfigurations.tanikaze = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { inherit inputs; };
-      modules = [ ./users/tanikaze ];
-      inherit pkgs;
+      liveiso = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/liveiso ];
+        inherit pkgs;
+      };
     };
   };
 }
