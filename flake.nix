@@ -1,10 +1,11 @@
 {
   description = "NixOS Configuration Flake";
+
   inputs = {
     home-manager.url = "github:Nix-Community/home-manager/release-24.11";
-    xremap.url = "github:xremap/nix-flake/release-24-.11";
     nixpkgs.url = "github:NixOS/NixPkgs/release-24.11";
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/release-24.11";
+    xremap.url = "github:xremap/nix-flake/master";
   };
 
   outputs = { nixpkgs, home-manager, ... } @inputs :
