@@ -3,7 +3,6 @@
   imports = [
     ./config/hyprland.nix
     ./config/mangohud.nix
-    ./config/waybar.nix
     ./config/xremap.nix
     ./config/shell.nix
     ./config/theme.nix
