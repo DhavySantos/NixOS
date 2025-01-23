@@ -21,7 +21,6 @@
   programs = {
     gamescope.enable = true;
     steam.enable = true;
-    dconf.enable = true;
     nh.enable = true;
   };
 
@@ -41,6 +40,5 @@
 
   ### NIX CONFIGURATION SECTION
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";
 }
