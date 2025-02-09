@@ -1,10 +1,10 @@
 { pkgs, ... } : {
-  systemd.services."autovt@tty1".enable = false;
-  systemd.services."getty@tty1".enable = false;
+  services.displayManager.autoLogin.user = "tanikaze";
+  services.displayManager.autoLogin.enable = true;
   services.displayManager.sddm.enable = true;
 
-  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
-  services.xserver.windowManager.i3.enable = true;
+  systemd.services."autovt@tty1".enable = false;
+  systemd.services."getty@tty1".enable = false;
 
   programs.hyprland.xwayland.enable = true;
   programs.hyprland.enable = true;
