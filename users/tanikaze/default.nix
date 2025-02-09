@@ -24,7 +24,6 @@
       ./config/shell.nix
       ./config/theme.nix
       ./config/hyprland
-
     ];
 
     home.homeDirectory = "/home/tanikaze";
@@ -33,6 +32,13 @@
 
     home.sessionVariables = {
       EDITOR = "nvim";
+    };
+
+    xdg.desktopEntries.steam_gamescope = {
+      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${steam}/bin/steam -gamepadui"
+      name = "Steam: BigPicture";
+      terminal = false;
+      icon = "steam";
     };
 
     programs.git.enable = true;
