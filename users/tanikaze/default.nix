@@ -35,15 +35,14 @@
     };
 
     xdg.desktopEntries.steam_gamescope = {
-      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${steam}/bin/steam -gamepadui"
+      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${steam}/bin/steam -gamepadui";
       name = "Steam: BigPicture";
       terminal = false;
       icon = "steam";
     };
 
-
     xdg.desktopEntries.lutris_gamescope = {
-      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${lutris}/bin/lutris"
+      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${lutris}/bin/lutris";
       name = "Lutris: Gamescope";
       terminal = false;
       icon = "lutris";
