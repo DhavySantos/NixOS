@@ -6,9 +6,7 @@ wallpaper = pkgs.fetchurl {
 };
 
 in {
-  imports = [
-    ./waybar.nix
-  ];
+  imports = [ ./waybar.nix ];
 
   services.hyprpaper.enable = true;
   services.hyprpaper.settings = {
@@ -59,6 +57,11 @@ in {
     general.allow_tearing = true;
 
     bind = import ./keybinds.nix { inherit pkgs; };
+
+    exec-once = (with pkgs; [
+      "${waybar}/bin/waybar -c ~/.config/waybar/config"
+      "${hyprpaper}/bin/hyprpaper"
+    ]);
 
     windowrulev2 = [
       "nofocus, class:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
