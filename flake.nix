@@ -8,19 +8,19 @@
     xremap.url = "github:xremap/nix-flake/master";
   };
 
-  outputs = { nixpkgs, home-manager, ... } @inputs :
+  outputs = { self, nixpkgs, home-manager, ... } @inputs : let
 
-  let
-    pkgs = import nixpkgs {
-      config.allowUnfree = true;
-      system = "x86_64-linux";
-    };
-  in
+  flakePath = self.outPath;
 
-  {
+  pkgs = import nixpkgs {
+    config.allowUnfree = true;
+    system = "x86_64-linux";
+  };
+
+  in {
     nixosConfigurations = {
       tsugumori = nixpkgs.lib.nixosSystem  {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs flakePath; };
         modules = [ ./hosts/tsugumori ];
         inherit pkgs;
       };
