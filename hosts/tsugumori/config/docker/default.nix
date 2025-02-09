@@ -32,7 +32,5 @@
     prowlarr = import ./containers/prowlarr.nix; # 172.18.1.4
     flaresolverr = import ./containers/flaresolverr.nix; # 172.18.1.5
     transmission = import ./containers/transmission.nix; # 172.18.1.6
-    vaultwarden = import ./containers/vaultwarden.nix; # 192.18.1.7
-    factorio = import ./containers/factorio.nix; # 172.18.2.1
   };
 }
