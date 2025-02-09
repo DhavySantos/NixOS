@@ -3,7 +3,7 @@
   hostname = "transmission";
 
   volumes = [
-    "/mnt/toshiba/containers/jellyfin/configs/transmission:/config"
+    "/mnt/toshiba/containers/jellyfin/config/transmission:/config"
     "/mnt/toshiba/containers/jellyfin/downloads:/downloads"
   ];
 

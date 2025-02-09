@@ -3,7 +3,7 @@
   hostname = "sonarr";
 
   volumes = [
-    "/mnt/toshiba/containers/jellyfin/configs/sonarr:/config"
+    "/mnt/toshiba/containers/jellyfin/config/sonarr:/config"
     "/mnt/toshiba/containers/jellyfin/downloads:/downloads"
     "/mnt/toshiba/containers/jellyfin/shows:/shows"
   ];
