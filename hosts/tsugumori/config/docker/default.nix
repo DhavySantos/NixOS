@@ -1,4 +1,5 @@
 { pkgs, ... } : {
+  virtualisation.docker.daemon.settings.bip = "172.17.0.1/16";
   virtualisation.docker.daemon.settings.iptables = false;
   virtualisation.oci-containers.backend = "docker";
   virtualisation.docker.enable = true;
@@ -15,7 +16,6 @@
       "docker-prowlarr.service"
       "docker-flaresolverr.service"
       "docker-transmission.service"
-      "docker-factorio.service"
     ];
 
     script = ''
