@@ -6,6 +6,11 @@
     nixpkgs.url = "github:NixOS/NixPkgs/release-24.11";
     stylix.url = "github:danth/stylix/release-24.11";
     xremap.url = "github:xremap/nix-flake/master";
+
+    schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @inputs : let
