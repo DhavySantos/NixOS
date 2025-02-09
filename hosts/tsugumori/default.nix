@@ -1,6 +1,6 @@
-{ pkgs, ... } : {
+{ pkgs, flakePath, ... } : {
   imports = [
-    ../../users/tanikaze
+    "${flakePath}/users/tanikaze"
 
     ./config/hardware.nix
     ./config/pipewire.nix
