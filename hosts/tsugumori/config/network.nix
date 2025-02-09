@@ -9,6 +9,18 @@
   networking.firewall.enable = false;
   networking.nat.enable = false;
 
+  networking.wireguard.interfaces."tun0" = {
+    privateKeyFile = "/etc/wireguard/privatekey";
+    generatePrivateKeyFile = true;
+    ips = [ "10.0.0.2/32" ];
+
+    peers = [{
+      publicKey = "FoGkivFs34UaqYHlpcfIJqM1h/Z9UD5d2VbTcoHG0VI=";
+      endpoint = "wireguard.tsugumori.cloud:51820";
+      allowedIPs = [ "10.0.0.0/16" ];
+    }];
+  };
+
   boot.kernel.sysctl."net.ipv4.conf.all.forwarding" = true;
 
   services.udev.extraRules = ''
