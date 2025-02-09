@@ -3,7 +3,7 @@
   virtualisation.oci-containers.backend = "docker";
   virtualisation.docker.enable = true;
 
-  systemd.services."docker-network-docker1" = {
+  systemd.services."network-docker1" = {
     serviceConfig.Type = "oneshot";
 
     after = [ "docker.service" ];
