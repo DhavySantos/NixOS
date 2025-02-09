@@ -23,9 +23,8 @@
       ./config/xremap.nix
       ./config/shell.nix
       ./config/theme.nix
-
       ./config/hyprland
-      ./config/i3wm
+
     ];
 
     home.homeDirectory = "/home/tanikaze";
