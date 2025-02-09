@@ -1,11 +1,13 @@
 { pkgs, inputs, lib, ... } : let
-  wallpaper = pkgs.fetchurl {
-    url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
-    hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
-  };
+
+wallpaper = pkgs.fetchurl {
+  url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
+  hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
+};
+
 in {
   imports = [ inputs.stylix.homeManagerModules.stylix ];
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+  stylix.base16Scheme = "${inputs.schemes}/base16/gruvbox-material-dark-medium.yaml";
   stylix.polarity = "dark";
 
   stylix.cursor.package = pkgs.apple-cursor;
