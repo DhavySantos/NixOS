@@ -12,11 +12,12 @@
   networking.wireguard.interfaces."tun0" = {
     privateKeyFile = "/etc/wireguard/privatekey";
     generatePrivateKeyFile = true;
-    ips = [ "10.0.0.2/32" ];
+    ips = [ "10.0.0.2/16" ];
 
     peers = [{
-      publicKey = "FoGkivFs34UaqYHlpcfIJqM1h/Z9UD5d2VbTcoHG0VI=";
-      endpoint = "wireguard.tsugumori.cloud:51820";
+      presharedKey = "hDEBap5akJSZw7mogDQyqSksfb9ZabPtX5UYFiD2/qM=";
+      publicKey = "GuIu1jowgt+VUF143Ln1Ksjxx51Ns7/LH4nUuRWNMm0=";
+      endpoint = "tsugumori.cloud:51820";
       allowedIPs = [ "10.0.0.0/16" ];
     }];
   };
