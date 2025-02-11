@@ -27,6 +27,7 @@ in {
     "hyprland/workspaces" = {
       format = "{icon}";
       format-icons."10" = "󰊗 ";
+      format-icons."20" = "󰊗 ";
     };
 
     "tray" = {
