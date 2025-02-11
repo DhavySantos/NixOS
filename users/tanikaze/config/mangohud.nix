@@ -4,6 +4,7 @@
   programs.mangohud.settings = {
     background_alpha = lib.mkForce 0.0;
     table_columns = 1;
+    fps_limit = 60;
 
     frame_timing = 1;
     frametime = 1;
