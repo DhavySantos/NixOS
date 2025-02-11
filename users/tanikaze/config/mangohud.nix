@@ -13,5 +13,8 @@
 
     font_size = 12;
     horizontal = 1;
+
+    toggle_hud = "Shift_R+F12";
+    toggle_fps_limit = "Shift_L+F11";
   };
 }
