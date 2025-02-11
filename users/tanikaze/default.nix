@@ -6,14 +6,9 @@
     isNormalUser = true;
   };
 
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-  home-manager.extraSpecialArgs = {
-    inherit inputs;
-  };
-
+  home-manager.extraSpecialArgs = { inherit inputs; };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
@@ -63,9 +58,10 @@
     };
 
     home.packages = (with pkgs; [
+      wineWowPackages.stable winetricks
       vesktop google-chrome spotify
       droidcam unrar ripgrep p7zip
-      unzip
+      unzip prismlauncher lutris
     ]);
 
     nixpkgs.config.allowUnfree = true;
