@@ -13,6 +13,10 @@
     window_margin_width = "10";
   };
 
+  programs.direnv.enableZshIntegration = true;
+  programs.direnv.silent = true;
+  programs.direnv.enable = true;
+
   programs.zsh = {
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
