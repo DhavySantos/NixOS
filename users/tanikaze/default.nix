@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... } : {
+{ pkgs, inputs, ... } : let system = pkgs.system; in {
 
   users.users.tanikaze = {
     extraGroups = [ "wheel" "uinput" "input" ];
@@ -52,12 +52,13 @@
 
     programs = {
       lazygit.enable = true;
-      neovim.enable = true;
       btop.enable = true;
       yazi.enable = true;
     };
 
-    home.packages = (with pkgs; [
+    home.packages = [
+      inputs.neovim.packages.${system}.default
+    ] ++ (with pkgs; [
       wineWowPackages.stable winetricks
       vesktop google-chrome spotify
       droidcam unrar ripgrep p7zip
