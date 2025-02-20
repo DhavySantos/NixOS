@@ -13,8 +13,7 @@
     PGID = "26";
   };
 
-  extraOptions = [
-    "--network=docker1"
-      "--ip=172.18.1.6"
-      ];
+  ports = [
+    "9091:9091"
+  ];
 }

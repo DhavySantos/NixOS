@@ -14,9 +14,11 @@
     PGID = "26";
   };
 
+  ports = [
+    "8096:8096"
+  ];
+
   extraOptions = [
     "--device=/dev/dri:/dev/dri"
-    "--network=docker1"
-    "--ip=172.18.1.1"
   ];
 }
