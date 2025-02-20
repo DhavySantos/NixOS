@@ -7,17 +7,16 @@ wallpaper = pkgs.fetchurl {
 
 in {
   imports = [ inputs.stylix.homeManagerModules.stylix ];
-  stylix.base16Scheme = "${inputs.schemes}/base16/gruvbox-material-dark-medium.yaml";
+  stylix.base16Scheme = "${inputs.schemes}/base16/gruvbox-dark-soft.yaml";
   stylix.polarity = "dark";
 
   stylix.cursor.package = pkgs.apple-cursor;
   stylix.cursor.name = "macOS-White";
   stylix.cursor.size = 24;
 
+  stylix.targets.neovim.enable = false;
   stylix.image = wallpaper;
   stylix.enable = true;
-
-  stylix.targets.neovim.enable = false;
 
   gtk.enable = true;
 
