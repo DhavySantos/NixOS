@@ -1,5 +1,6 @@
-{ pkgs, flakePath, ... } : {
+{ pkgs, flakePath, inputs, ... } : {
   imports = [
+    inputs.disko.nixosModules.disko
     "${flakePath}/users/tanikaze"
 
     ./config/hardware.nix
@@ -7,6 +8,7 @@
     ./config/xserver.nix
     ./config/network.nix
     ./config/docker
+    ./disko.nix
   ];
 
   ### ENVIRONMENT SECTION
