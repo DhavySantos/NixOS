@@ -48,6 +48,7 @@
       user.email = "dhavysantos@gmail.com";
       init.defaultBranch = "main";
       user.name = "Dhavy Santos";
+      pull.rebase = false;
     };
 
     programs = {
