@@ -50,6 +50,9 @@
   ### BOOT SECTION
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
+  boot.tmp.tmpfsSize = "100%";
+  boot.tmp.cleanOnBoot = true;
+  boot.tmp.useTmpfs = true;
 
   ### NIX CONFIGURATION SECTION
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
