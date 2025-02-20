@@ -16,7 +16,7 @@
     content.partitions.ROOT = {
       size = "100%";
       content.format = "ext4";
-      cnotent.mountpoint = "/";
+      content.mountpoint = "/";
       content.type = "filesystem";
     };
   };
