@@ -34,7 +34,6 @@ in {
       "7, monitor:HDMI-A-1,"
       "8, monitor:HDMI-A-1,"
       "9, monitor:HDMI-A-1,"
-      "10, monitor:HDMI-A-1,"
 
       "11, monitor:HDMI-A-2,"
       "12, monitor:HDMI-A-2,"
@@ -45,7 +44,6 @@ in {
       "17, monitor:HDMI-A-2,"
       "18, monitor:HDMI-A-2,"
       "19, monitor:HDMI-A-2,"
-      "20, monitor:HDMI-A-2,"
     ];
 
     bindm = [
@@ -67,7 +65,7 @@ in {
       "nofocus, class:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
       "suppressevent maximize, noshadow, class:.*"
 
-      "workspace 10, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+)$"
+      "workspace 20, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+)$"
       "workspace special:magic, class:^(discord|vesktop|Spotify)$"
     ];
   };
