@@ -7,6 +7,7 @@
     stylix.url = "github:danth/stylix/release-24.11";
     xremap.url = "github:xremap/nix-flake/master";
     neovim.url = "github:DhavySantos/NeoVim";
+    disko.url = "github:Nix-Community/disko";
 
     schemes = {
       url = "github:tinted-theming/schemes";
