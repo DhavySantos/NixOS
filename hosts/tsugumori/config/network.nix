@@ -1,5 +1,6 @@
 { lib, ... } : {
   networking.nftables.ruleset = builtins.readFile ../files/nftables.conf;
+  networking.nftables.flushRuleset = false;
   networking.nftables.enable = true;
 
   networking.nameservers = lib.mkForce [ "1.1.1.1" "8.8.8.8" ];
@@ -12,13 +13,14 @@
   networking.wireguard.interfaces."tun0" = {
     privateKeyFile = "/etc/wireguard/privatekey";
     generatePrivateKeyFile = true;
-    ips = [ "10.0.0.2/16" ];
+    ips = [ "10.0.0.2/24" ];
 
     peers = [{
-      presharedKey = "hDEBap5akJSZw7mogDQyqSksfb9ZabPtX5UYFiD2/qM=";
-      publicKey = "GuIu1jowgt+VUF143Ln1Ksjxx51Ns7/LH4nUuRWNMm0=";
-      endpoint = "tsugumori.cloud:51820";
-      allowedIPs = [ "10.0.0.0/16" ];
+      presharedKey = "9ydRRQJ7Bh0APXBTzYyr2Pg1zWu5wH744XG8J0BLNEo=";
+      publicKey = "rhUeNt9HncVvLWU28F7RtOVmJglT3ulCr/hRygFIEFI=";
+      endpoint = "wireguard.tsugumori.cloud:51820";
+      allowedIPs = [ "10.0.0.0/24" ];
+      persistentKeepalive = 25;
     }];
   };
 
