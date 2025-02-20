@@ -11,6 +11,7 @@
     font_family = "CaskaydiaCove Nerd Font";
     confirm_os_window_close = "0";
     window_margin_width = "10";
+    font_size = 10.0;
   };
 
   programs.direnv.enableZshIntegration = true;
