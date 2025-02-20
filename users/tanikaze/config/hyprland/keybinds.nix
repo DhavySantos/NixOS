@@ -1,9 +1,11 @@
 { pkgs, ... } : [
   "$MOD2, N, exec, ${pkgs.google-chrome}/bin/google-chrome-stable --incognito"
   "$MOD1, N, exec, ${pkgs.google-chrome}/bin/google-chrome-stable"
+  "$MOD2, RETURN, exec, ${pkgs.kitty}/bin/kitty -o shell ${pkgs.tmux}/bin/tmux"
   "$MOD1, RETURN, exec, ${pkgs.kitty}/bin/kitty"
 
-  ",PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+  "     , PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window -m active --clipboard-only"
+  "SHIFT, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
   "$MOD1, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show-icons -show drun"
   "$MOD2, F, togglefloating"
   "$MOD1, J, togglesplit"
@@ -26,7 +28,7 @@
   "$MOD1, 7, workspace, 7"
   "$MOD1, 8, workspace, 8"
   "$MOD1, 9, workspace, 9"
-  "$MOD1, Q, workspace, 10"
+  "$MOD1, 0, workspace, 10"
 
   "$MOD2, 1, movetoworkspace, 1"
   "$MOD2, 2, movetoworkspace, 2"
@@ -37,7 +39,7 @@
   "$MOD2, 7, movetoworkspace, 7"
   "$MOD2, 8, movetoworkspace, 8"
   "$MOD2, 9, movetoworkspace, 9"
-  "$MOD2, Q, movetoworkspace, 10"
+  "$MOD2, 0, movetoworkspace, 10"
 
   "$MOD1, F1, workspace, 11"
   "$MOD1, F2, workspace, 12"
@@ -48,7 +50,7 @@
   "$MOD1, F7, workspace, 17"
   "$MOD1, F8, workspace, 18"
   "$MOD1, F9, workspace, 19"
-  "$MOD1, F10, workspace, 20"
+  "$MOD1, Q, workspace, 20"
 
   "$MOD2, F1, movetoworkspace, 11"
   "$MOD2, F2, movetoworkspace, 12"
@@ -59,5 +61,5 @@
   "$MOD2, F7, movetoworkspace, 17"
   "$MOD2, F8, movetoworkspace, 18"
   "$MOD2, F9, movetoworkspace, 19"
-  "$MOD2, F10, movetoworkspace, 20"
+  "$MOD2, Q, movetoworkspace, 20"
 ]
