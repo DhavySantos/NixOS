@@ -653,11 +653,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1739505013,
-        "narHash": "sha256-rYYsUUz5/VePHOFHLUt/pWrDiN9BxnD1v/vq2mXOOHY=",
+        "lastModified": 1739670951,
+        "narHash": "sha256-T92ozBedE4311anKnV+g6oknkG86ka+11RZxFnBdjzE=",
         "owner": "DhavySantos",
         "repo": "NeoVim",
-        "rev": "428d735588623b341e5c8fd38b6891b84a8f908e",
+        "rev": "0a45ac575b122dc671ebc5d49bf1261eb98c7719",
         "type": "github"
       },
       "original": {
