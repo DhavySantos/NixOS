@@ -14,6 +14,17 @@
     vulkan-loader vulkan-headers vulkan-tools
   ]);
 
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = [ "tanikaze" ];
+      PermitRootLogin = "no";
+      X11Forwarding = true;
+    };
+  };
+
   fonts.packages = [
     (import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; })
   ];
