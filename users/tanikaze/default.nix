@@ -1,20 +1,10 @@
-{ pkgs, inputs, ... } : let system = pkgs.system; in {
-
-  users.users.tanikaze = {
-    extraGroups = [ "wheel" "uinput" "input" ];
-    description = "tanikaze";
-    isNormalUser = true;
-  };
-
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-  home-manager.extraSpecialArgs = { inherit inputs; };
+{ self, pkgs, inputs, ... } : {
+  home-manager.extraSpecialArgs = { inherit self inputs; };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.tanikaze = {
     imports = [
-      ./config/mangohud.nix
       ./config/xremap.nix
       ./config/shell.nix
       ./config/theme.nix
@@ -27,20 +17,6 @@
 
     home.sessionVariables = {
       EDITOR = "nvim";
-    };
-
-    xdg.desktopEntries.steam_gamescope = {
-      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${steam}/bin/steam -gamepadui";
-      name = "Steam: BigPicture";
-      terminal = false;
-      icon = "steam";
-    };
-
-    xdg.desktopEntries.lutris_gamescope = {
-      exec = with pkgs; "${gamescope}/bin/gamescope -w 1920 -h 1080 -e -f -r 60 --force-grab-cursor -- ${lutris}/bin/lutris";
-      name = "Lutris: Gamescope";
-      terminal = false;
-      icon = "lutris";
     };
 
     programs.git.enable = true;
@@ -57,13 +33,8 @@
       yazi.enable = true;
     };
 
-    home.packages = [
-      inputs.neovim.packages.${system}.default
-    ] ++ (with pkgs; [
-      wineWowPackages.stable winetricks
-      vesktop google-chrome spotify
-      droidcam unrar ripgrep p7zip
-      unzip prismlauncher lutris
+    home.packages = (with pkgs; [
+      vesktop google-chrome neovim
     ]);
 
     nixpkgs.config.allowUnfree = true;
