@@ -18,6 +18,12 @@
       default = 1.0;
     };
 
+    scale = mkOption {
+      description = "Waybar Scale Factor";
+      type = types.float;
+      default = 1.0;
+    };
+
     colors = mkOption {
       description = "Waybar colors";
       default = { };
@@ -81,8 +87,8 @@
 
       tooltip {
         background: alpha(@background, ${builtins.toString alpha});
-        border: 1px solid alpha(@text, ${builtins.toString alpha});
-        font-size: 14px;
+        border: ${builtins.toString (1.0 * scale)}px solid alpha(@text, ${builtins.toString alpha});
+        font-size: ${builtins.toString (14.0 * scale)}px;
       }
 
       tooltip label {
@@ -90,67 +96,66 @@
       }
 
       .modules-left {
-        border-radius: 6px;
-        margin-bottom: 6px;
-        margin-left: 6px;
+        border-radius: ${builtins.toString (6.0 * scale)}px;
+        margin-bottom: ${builtins.toString (6.0 * scale)}px;
+        margin-left: ${builtins.toString (6.0 * scale)}px;
       }
 
       .modules-center {
-        border-radius: 6px;
-        margin-bottom: 6px;
-        margin-right: 6px;
-        margin-left: 6px;
+        border-radius: ${builtins.toString (6.0 * scale)}px;
+        margin-bottom: ${builtins.toString (6.0 * scale)}px;
+        margin-right: ${builtins.toString (6.0 * scale)}px;
+        margin-left: ${builtins.toString (6.0 * scale)}px;
       }
 
       .modules-right {
-        border-radius: 6px;
-        margin-bottom: 6px;
-        margin-right: 6px;
+        border-radius: ${builtins.toString (6.0 * scale)}px;
+        margin-bottom: ${builtins.toString (6.0 * scale)}px;
+        margin-right: ${builtins.toString (6.0 * scale)}px;
       }
 
       #custom-system {
-        border-radius: 6px 0px 0px 6px;
-        padding-right: 6px;
-        padding-left: 6px;
+        border-radius: ${builtins.toString (6.0 * scale)}px 0px 0px ${builtins.toString (6.0 * scale)}px;
+        padding-right: ${builtins.toString (6.0 * scale)}px;
+        padding-left: ${builtins.toString (6.0 * scale)}px;
 
         background: alpha(@background-alt, ${builtins.toString alpha});
         color: @accent;
 
-        font-size: 12px;
+        font-size: ${builtins.toString (12.0 * scale)}px;
       }
 
       #tray {
-        border-radius: 10px;
+        border-radius: ${builtins.toString (10.0 * scale)}px;
 
         background: alpha(@background, ${builtins.toString alpha});
-        padding-right: 6px;
-        padding-left: 6px;
-
+        padding-right: ${builtins.toString (6.0 * scale)}px;
+        padding-left: ${builtins.toString (6.0 * scale)}px;
       }
 
       #clock {
-        border-radius: 0px 6px 6px 0px;
-        padding-right: 6px;
-        padding-left: 6px;
+        border-radius: 0px ${builtins.toString (6.0 * scale)}px ${builtins.toString (6.0 * scale)}px 0px;
+        padding-right: ${builtins.toString (6.0 * scale)}px;
+        padding-left: ${builtins.toString (6.0 * scale)}px;
 
         background: alpha(@background, ${builtins.toString alpha});
-        font-size: 12px;
+        font-size: ${builtins.toString (12.0 * scale)}px;
         color: @text;
       }
 
       #workspaces {
-        border-radius: 6px;
-        padding-right: 8px;
-        padding-left: 6px;
+        border-radius: ${builtins.toString (6.0 * scale)}px;
+        padding-right: ${builtins.toString (8.0 * scale)}px;
+        padding-left: ${builtins.toString (6.0 * scale)}px;
 
         background: alpha(@background, ${builtins.toString alpha});
-        font-size: 14px;
+        font-size: ${builtins.toString (14.0 * scale)}px;
       }
 
       #workspaces button {
-        border-radius: 6px;
-        margin-right: 4px;
-        margin-left: 4px;
+        border-radius: ${builtins.toString (6.0 * scale)}px;
+        margin-right: ${builtins.toString (4.0 * scale)}px;
+        margin-left: ${builtins.toString (4.0 * scale)}px;
 
         background: alpha(@background, 0);
         color: @text;
@@ -168,7 +173,6 @@
         color: @urgent;
       }
     '');
-
     settings.main = {
       reload_style_on_change = true;
       position = "bottom";
