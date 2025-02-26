@@ -35,6 +35,7 @@
 
     home.packages = (with pkgs; [
       vesktop google-chrome neovim
+      droidcam
     ]);
 
     nixpkgs.config.allowUnfree = true;
