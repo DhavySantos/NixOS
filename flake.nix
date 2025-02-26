@@ -1,42 +1,42 @@
 {
-  description = "NixOS Configuration Flake";
+  description = "Flake Nixos Configuration";
 
   inputs = {
-    home-manager.url = "github:Nix-Community/home-manager/release-24.11";
-    nixpkgs.url = "github:NixOS/NixPkgs/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix/release-24.11";
+    disko.url = "github:nix-community/disko/master";
     xremap.url = "github:xremap/nix-flake/master";
-    neovim.url = "github:DhavySantos/NeoVim";
-    disko.url = "github:Nix-Community/disko";
+    neovim.url = "github:dhavysantos/neovim";
+  };
 
-    schemes = {
-      url = "github:tinted-theming/schemes";
-      flake = false;
+  outputs = { self, nixpkgs, flake-parts, ... } @inputs :
+  flake-parts.lib.mkFlake { inherit inputs; } {
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+
+    flake.nixosConfigurations.tsugumori = nixpkgs.lib.nixosSystem rec {
+      specialArgs = { inherit self system inputs; };
+      modules = [ ./hosts/tsugumori ];
+      system = "x86_64-linux";
     };
-  };
 
-  outputs = { self, nixpkgs, home-manager, ... } @inputs : let
+    flake.overlays.default = final: prev: let
+      system = prev.stdenv.hostPlatform.system;
+      packages = self.packages.${system};
+    in
 
-  flakePath = self.outPath;
+    {
+      CascadiaCode = packages.CascadiaCode;
+      neovim = inputs.neovim.packages.${system}.default;
+    };
 
-  pkgs = import nixpkgs {
-    config.allowUnfree = true;
-    system = "x86_64-linux";
-  };
+    flake.homeManagerModules.waybar = { pkgs, ... } : {
+      imports = [ ./modules/home/waybar ];
+    };
 
-  in {
-    nixosConfigurations = {
-      tsugumori = nixpkgs.lib.nixosSystem  {
-        specialArgs = { inherit inputs flakePath; };
-        modules = [ ./hosts/tsugumori ];
-        inherit pkgs;
-      };
-
-      liveiso = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/liveiso ];
-        inherit pkgs;
-      };
+    perSystem = { pkgs, system, ... } : {
+      packages.CascadiaCode = import ./packages/CascadiaCode.nix { inherit pkgs; };
     };
   };
 }
