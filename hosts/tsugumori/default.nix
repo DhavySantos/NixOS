@@ -1,60 +1,53 @@
-{ pkgs, flakePath, inputs, ... } : {
-  imports = [
-    inputs.disko.nixosModules.disko
-    "${flakePath}/users/tanikaze"
+{ self, inputs, pkgs, ... } : {
 
-    ./config/hardware.nix
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.disko.nixosModules.disko
+    "${self}/users/tanikaze"
     ./config/pipewire.nix
-    ./config/xserver.nix
     ./config/network.nix
-    ./config/docker
+    ./config/xserver.nix
+    ./hardware.nix
     ./disko.nix
   ];
 
-  ### ENVIRONMENT SECTION
+  users.users.tanikaze = {
+    extraGroups = [ "wheel" "uinput" "input" "gamemode" ];
+    isNormalUser = true;
+  };
+
   environment.systemPackages = (with pkgs; [
     vulkan-loader vulkan-headers vulkan-tools
+    p7zip unzip unrar dunst
   ]);
 
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = [ "tanikaze" ];
-      PermitRootLogin = "no";
-      X11Forwarding = true;
-    };
-  };
+  fonts.packages = (with pkgs; [
+    CascadiaCode
+  ]);
 
-  fonts.packages = [
-    (import ../../packages/caskaydia_cove_nf.nix { inherit pkgs; })
-  ];
+  programs.gamemode.settings.custom.start = "${pkgs.libnotify}/bin/notify-send \"GameMode started\"";
+  programs.gamemode.settings.custom.end = "${pkgs.libnotify}/bin/notify-send \"GameMode ended\"";
+  programs.gamemode.settings.general.renice = 20;
+  programs.gamemode.enable = true;
 
-  programs = {
-    gamescope.enable = true;
-    steam.enable = true;
-    nh.enable = true;
-  };
+  programs.gamescope.enable = true;
+  programs.dconf.enable = true;
+  programs.steam.enable = true;
+  programs.nh.enable = true;
 
-  powerManagement.cpuFreqGovernor = "performance";
   environment.pathsToLink = [ "/share/zsh" ];
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "br-abnt2";
 
-  ### SECURITY SECTION
   security.sudo.wheelNeedsPassword = false;
   security.polkit.enable = true;
 
-  ### BOOT SECTION
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
-  boot.tmp.tmpfsSize = "100%";
-  boot.tmp.cleanOnBoot = true;
-  boot.tmp.useTmpfs = true;
 
-  ### NIX CONFIGURATION SECTION
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.overlays = [ self.outputs.overlays.default ];
+  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";
 }
