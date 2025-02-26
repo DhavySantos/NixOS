@@ -1,12 +1,17 @@
-{ pkgs, ... } : let
+{ self, pkgs, ... } : let
 
 wallpaper = pkgs.fetchurl {
-  url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/village.jpg";
-  hash = "sha256-t3ItqKeewcpGLoyFG4ch23stzGpaujFfANM++Aj3SDM";
+  url = "https://i.imgur.com/5ALLimu.jpeg";
+  hash = "sha256-7/lzW5BfpC1yF1NwOXnTZ/+IXMavK+Vd71bYQBfUqEA=";
 };
 
 in {
-  imports = [ ./waybar.nix ];
+  imports = [ self.homeManagerModules.waybar ];
+
+  stylix.targets.waybar.enable = false;
+
+  modules.waybar.enable = true;
+  modules.waybar.alpha = 0.8;
 
   services.hyprpaper.enable = true;
   services.hyprpaper.settings = {
@@ -30,20 +35,11 @@ in {
       "3, monitor:HDMI-A-1,"
       "4, monitor:HDMI-A-1,"
       "5, monitor:HDMI-A-1,"
-      "6, monitor:HDMI-A-1,"
-      "7, monitor:HDMI-A-1,"
-      "8, monitor:HDMI-A-1,"
-      "9, monitor:HDMI-A-1,"
-
-      "11, monitor:HDMI-A-2,"
-      "12, monitor:HDMI-A-2,"
-      "13, monitor:HDMI-A-2,"
-      "14, monitor:HDMI-A-2,"
-      "15, monitor:HDMI-A-2,"
-      "16, monitor:HDMI-A-2,"
-      "17, monitor:HDMI-A-2,"
-      "18, monitor:HDMI-A-2,"
-      "19, monitor:HDMI-A-2,"
+      "6, monitor:HDMI-A-2,"
+      "7, monitor:HDMI-A-2,"
+      "8, monitor:HDMI-A-2,"
+      "9, monitor:HDMI-A-2,"
+      "10, monitor:HDMI-A-2,"
     ];
 
     bindm = [
@@ -51,8 +47,14 @@ in {
       "$MOD1, mouse:272, movewindow"
     ];
 
+    decoration.rounding = 10;
+
     input.kb_layout = "br";
+
     general.allow_tearing = true;
+    general.gaps_out = 10;
+    general.gaps_in = 10;
+
 
     bind = import ./keybinds.nix { inherit pkgs; };
 
@@ -65,7 +67,7 @@ in {
       "nofocus, class:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
       "suppressevent maximize, noshadow, class:.*"
 
-      "workspace 20, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+)$"
+      "workspace 10, monitor 1, floating, fullscreen, class:^(gamescope|steam_app_\\d+|Minecraft*)$"
       "workspace special:magic, class:^(discord|vesktop|Spotify)$"
     ];
   };
