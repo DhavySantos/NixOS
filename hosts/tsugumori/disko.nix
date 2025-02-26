@@ -1,6 +1,6 @@
 {
   disko.devices.disk.main = {
-    device = "/dev/disk/by-id/nvme-NVME_SSD_512GB_GSMD22A0900736-part1";
+    device = "/dev/disk/by-id/nvme-NVME_SSD_512GB_GSMD22A0900736";
     content.type = "gpt";
     type = "disk";
 
