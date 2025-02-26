@@ -1,4 +1,4 @@
-{ pkgs, config, ... } : {
+{ pkgs, config, lib, ... } : {
   programs.tmux = {
 		extraConfig = builtins.readFile ../files/tmux.conf;
 		shell = "${pkgs.zsh}/bin/zsh";
@@ -7,10 +7,12 @@
 
   programs.kitty.enable = true;
   programs.kitty.settings = {
-    shell = "${pkgs.tmux}/bin/tmux new -A -s Default";
+    shell = "${pkgs.tmux}/bin/tmux new -A -s default";
     font_family = "CaskaydiaCove Nerd Font";
     confirm_os_window_close = "0";
     window_margin_width = "10";
+    background_opacity = lib.mkForce 0.9;
+    background_blur = 10;
     font_size = 10.0;
   };
 
@@ -44,11 +46,11 @@
   programs.starship.enableZshIntegration = true;
   programs.starship.enable = true;
   programs.starship.settings = {
-    format = "$os$directory$git_branch$package$rust$fill\n $character";
+    format = "$os$directory$git_branch$package$rust$fill\n$character";
     add_newline = true;
 
-    character.success_symbol = "[󱞩](bold green)";
-    character.error_symbol = "[󱞩](bold red)";
+    character.success_symbol = " [󱞩](bold green)";
+    character.error_symbol = " [󱞩](bold red)";
 
     fill.symbol = " ";
 
