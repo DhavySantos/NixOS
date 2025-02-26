@@ -4,7 +4,14 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="Droidcam" exclusive_caps=1
+  '';
 
   fileSystems."/boot" = lib.mkForce {
 		device = "/dev/disk/by-id/nvme-NVME_SSD_512GB_GSMD22A0900736-part1";
