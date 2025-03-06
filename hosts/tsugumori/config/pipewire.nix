@@ -1,16 +1,12 @@
-{ pkgs, ... } : {
-	hardware.pulseaudio.enable = false;
-	security.rtkit.enable = true;
+{
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
 
-	services.pipewire = {
-		alsa.support32Bit = true;
-		pulse.enable = true;
-		alsa.enable = true;
-		jack.enable = true;
-		enable = true;
-	};
-
-	environment.systemPackages = with pkgs; [
-		pulsemixer pulseaudio
-  ];
+  services.pipewire = {
+    alsa.support32Bit = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    enable = true;
+  };
 }
