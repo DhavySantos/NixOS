@@ -1,39 +1,31 @@
-{ self, inputs, pkgs, ... } : {
+{ self, inputs, pkgs, ... }:
 
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.disko.nixosModules.disko
     "${self}/users/tanikaze"
     ./config/pipewire.nix
-    ./config/network.nix
     ./config/xserver.nix
     ./hardware.nix
-    ./disko.nix
   ];
 
+  home-manager.extraSpecialArgs = { inherit inputs self; };
+  home-manager.backupFileExtension = "backup";
+
   users.users.tanikaze = {
-    extraGroups = [ "wheel" "uinput" "input" "gamemode" ];
+    extraGroups = [ "wheel" ];
     isNormalUser = true;
   };
 
-  environment.systemPackages = (with pkgs; [
-    vulkan-loader vulkan-headers vulkan-tools
-    p7zip unzip unrar dunst
-  ]);
+  environment.systemPackages = with pkgs; [
+    p7zip unzip unrar zip
+  ];
 
-  fonts.packages = (with pkgs; [
-    CascadiaCode
-  ]);
+  fonts.packages = with pkgs; [
+    CascadiaCode-NerdFont
+  ];
 
-  programs.gamemode.settings.custom.start = "${pkgs.libnotify}/bin/notify-send \"GameMode started\"";
-  programs.gamemode.settings.custom.end = "${pkgs.libnotify}/bin/notify-send \"GameMode ended\"";
-  programs.gamemode.settings.general.renice = 20;
-  programs.gamemode.enable = true;
-
-  programs.gamescope.enable = true;
   programs.dconf.enable = true;
-  programs.steam.enable = true;
-  programs.nh.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
   time.timeZone = "America/Sao_Paulo";
@@ -47,7 +39,9 @@
   boot.loader.systemd-boot.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.overlays = [ self.outputs.overlays.default ];
+  nixpkgs.overlays = [ inputs.nixverse.overlays.default ];
   nixpkgs.config.allowUnfree = true;
+
+  networking.hostName = "tsugumori";
   system.stateVersion = "24.11";
 }
