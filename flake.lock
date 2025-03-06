@@ -342,14 +342,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1741197058,
-        "narHash": "sha256-sTEVQKHJTwjGtmqru4aHsnpuyctxQLF2XPJYsKkGqmI=",
-        "path": "/home/tanikaze/projects/nixverse",
-        "type": "path"
+        "lastModified": 1741269662,
+        "narHash": "sha256-mCDZeliciHNyD6mQlNAhW4WGnQbP5Q3/eAoQDLSUdcM=",
+        "owner": "dhavysantos",
+        "repo": "nixverse",
+        "rev": "3ae85d3cf55daee6580c433e52385aff5be47a46",
+        "type": "github"
       },
       "original": {
-        "path": "/home/tanikaze/projects/nixverse",
-        "type": "path"
+        "owner": "dhavysantos",
+        "repo": "nixverse",
+        "type": "github"
       }
     },
     "root": {
