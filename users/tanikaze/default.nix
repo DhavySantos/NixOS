@@ -1,42 +1,28 @@
-{ self, pkgs, inputs, ... } : {
-  home-manager.extraSpecialArgs = { inherit self inputs; };
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
+{ pkgs, ...}:
 
+{
   home-manager.users.tanikaze = {
     imports = [
-      ./config/xremap.nix
+      ./config/hyprland.nix
       ./config/shell.nix
       ./config/theme.nix
-      ./config/hyprland
     ];
-
-    home.homeDirectory = "/home/tanikaze";
-    home.stateVersion = "24.11";
-    home.username = "tanikaze";
 
     home.sessionVariables = {
       EDITOR = "nvim";
     };
 
-    programs.git.enable = true;
-    programs.git.extraConfig = {
-      user.email = "dhavysantos@gmail.com";
-      init.defaultBranch = "main";
-      user.name = "Dhavy Santos";
-      pull.rebase = false;
-    };
+    home.packages = with pkgs; [
+      vesktop google-chrome
+    ];
 
-    programs = {
-      lazygit.enable = true;
-      btop.enable = true;
-      yazi.enable = true;
-    };
+    programs.lazygit.enable = true;
+    programs.yazi.enable = true;
+    programs.btop.enable = true;
 
-    home.packages = (with pkgs; [
-      vesktop google-chrome neovim
-      droidcam
-    ]);
+    home.homeDirectory = "/home/tanikaze";
+    home.stateVersion = "24.11";
+    home.username = "tanikaze";
 
     nixpkgs.config.allowUnfree = true;
   };
