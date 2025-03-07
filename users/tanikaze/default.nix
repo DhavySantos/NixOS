@@ -4,8 +4,8 @@
   home-manager.users.tanikaze = {
     imports = [
       ./config/hyprland.nix
-      ./config/shell.nix
       ./config/theme.nix
+      ./config/shell.nix
     ];
 
     home.sessionVariables = {
@@ -15,6 +15,15 @@
     home.packages = with pkgs; [
       vesktop google-chrome
     ];
+
+    programs.git.enable = true;
+    programs.git.extraConfig = {
+      init.defaultBranch = "main";
+      user = {
+        email = "DhavyZhn@gmail.com";
+        name = "Dhavy Santos";
+      };
+    };
 
     programs.lazygit.enable = true;
     programs.yazi.enable = true;
