@@ -18,13 +18,17 @@
   };
 
   environment.systemPackages = with pkgs; [
-    p7zip unzip unrar zip
+    p7zip unzip unrar zip pulsemixer
   ];
 
   fonts.packages = with pkgs; [
     CascadiaCode-NerdFont
   ];
 
+  programs.gamescope.args = [ "-e" "-f" "-w 1920" "-h 1080" ];
+  programs.gamescope.enable = true;
+
+  programs.steam.enable = true;
   programs.dconf.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
