@@ -3,7 +3,6 @@
 {
   home-manager.users.tanikaze = {
     imports = [
-      ./config/hyprland.nix
       ./config/theme.nix
       ./config/shell.nix
     ];
