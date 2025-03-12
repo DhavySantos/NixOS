@@ -28,8 +28,10 @@
   programs.gamescope.args = [ "-e" "-f" "-w 1920" "-h 1080" ];
   programs.gamescope.enable = true;
 
+  programs.nix-ld.enable = true;
   programs.steam.enable = true;
   programs.dconf.enable = true;
+  programs.nh.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
   time.timeZone = "America/Sao_Paulo";
