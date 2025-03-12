@@ -5,6 +5,7 @@
     imports = [
       ./config/theme.nix
       ./config/shell.nix
+      ./config/i3wm.nix
     ];
 
     home.sessionVariables = {
