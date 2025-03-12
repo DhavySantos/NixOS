@@ -13,7 +13,8 @@
     };
 
     home.packages = with pkgs; [
-      vesktop google-chrome
+      vesktop google-chrome spotify
+      lutris winetricks wineWowPackages.stable
     ];
 
     programs.git.enable = true;
