@@ -6,6 +6,8 @@
   stylix.polarity = "dark";
   stylix.enable = true;
 
+  stylix.targets.neovim.enable = false;
+
   stylix.cursor.package = pkgs.apple-cursor;
   stylix.cursor.name = "macOS-White";
   stylix.cursor.size = 24;
