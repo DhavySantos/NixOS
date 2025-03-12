@@ -7,7 +7,7 @@
   boot.kernelParams = [ "amdgpu.ppfeaturemask=0xFFF7FFFF" ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.supportedFilesystems = [ "btrfs" ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="Droidcam" exclusive_caps=1
   '';
@@ -21,6 +21,12 @@
   fileSystems."/" = lib.mkForce {
     device = "/dev/mapper/root";
     fsType = "ext4";
+  };
+
+  fileSystems."/mnt/steam" = lib.mkForce {
+    device = "/dev/disk/by-id/ata-Hitachi_HTS547550A9E384_J2260056GD9SXC-part1";
+    options = [ "nofail" "subvol=@steam" "compress=zstd" ];
+    fsType = "btrfs";
   };
 
   boot.initrd.luks.devices."root" = {
