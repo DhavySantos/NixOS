@@ -4,6 +4,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     "${self}/users/tanikaze"
+    ./config/services.nix
     ./config/pipewire.nix
     ./config/xserver.nix
     ./hardware.nix
@@ -18,7 +19,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    p7zip unzip unrar zip pulsemixer
     p7zip unzip unrar zip lact droidcam
     pulsemixer
   ];
