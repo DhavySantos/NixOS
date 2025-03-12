@@ -1,4 +1,4 @@
-{ self, inputs, pkgs, ... }:
+{ self, inputs, system, pkgs, ... }:
 
 {
   imports = [
@@ -27,15 +27,14 @@
     CascadiaCode-NerdFont
   ];
 
-  programs.gamescope.args = [ "-e" "-f" "-w 1920" "-h 1080" ];
   programs.gamescope.enable = true;
-
   programs.nix-ld.enable = true;
   programs.steam.enable = true;
   programs.dconf.enable = true;
   programs.nh.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
+
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "br-abnt2";
@@ -47,10 +46,14 @@
   boot.loader.systemd-boot.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
+
+  boot.tmp.cleanOnBoot = true;
+  boot.tmp.tmpfsSize = "100%";
+  boot.tmp.useTmpfs = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.overlays = [ inputs.nixverse.overlays.default ];
   nixpkgs.config.allowUnfree = true;
-
   networking.hostName = "tsugumori";
   system.stateVersion = "24.11";
 }
