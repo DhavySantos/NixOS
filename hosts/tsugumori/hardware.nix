@@ -4,6 +4,7 @@
   imports = [ "${modulesPath}/installer/scan/not-detected.nix" ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xFFF7FFFF" ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" ];
