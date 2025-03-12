@@ -26,6 +26,13 @@
       };
     };
 
+    programs.neovim = {
+      defaultEditor = true;
+      vimAlias = true;
+      viAlias = true;
+      enable = true;
+    };
+
     programs.lazygit.enable = true;
     programs.yazi.enable = true;
     programs.btop.enable = true;
