@@ -42,6 +42,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
+  powerManagement.cpuFreqGovernor = "performance";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.overlays = [ inputs.nixverse.overlays.default ];
   nixpkgs.config.allowUnfree = true;
