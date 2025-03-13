@@ -19,7 +19,7 @@
 
   fileSystems."/mnt/steam/" = {
     device = "/dev/disk/by-id/ata-TOSHIBA_HDWD120_Y831YZJAS-part1";
-    options = [ "nofail" "compress=zstd" "noatime" ];
+    options = [ "nofail" "compress=zstd" "noatime" "subvol=@steam" ];
     fsType = "btrfs";
   };
 
