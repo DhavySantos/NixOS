@@ -1,8 +1,9 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, pkgs, ... }:
 
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.disko.nixosModules.disko
     "${self}/users/tanikaze"
     ./config/services.nix
     ./config/pipewire.nix
