@@ -24,7 +24,6 @@
 
       content.content = {
         extraArgs = [ "-f" ];
-        enableQuota = true;
         type = "btrfs";
 
         subvolumes = {
