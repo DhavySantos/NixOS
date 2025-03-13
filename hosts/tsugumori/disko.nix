@@ -16,7 +16,7 @@
       };
     };
 
-    content.partitions.root = {
+    content.partitions.data = {
       content.settings.allowDiscards = true;
       content.name = "crypted";
       content.type = "luks";
