@@ -9,6 +9,7 @@
     ./config/pipewire.nix
     ./config/xserver.nix
     ./hardware.nix
+    ./disko.nix
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs self; };
