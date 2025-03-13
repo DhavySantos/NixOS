@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix/release-24.11";
     nixverse.url = "github:dhavysantos/nixverse";
+    disko.url = "github:nix-community/disko";
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {
