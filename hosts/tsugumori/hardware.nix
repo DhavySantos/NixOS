@@ -17,7 +17,7 @@
     options v4l2loopback video_nr=2,3 width=640,1920 max_width=1920 height=480,1080 max_height=1080 format=YU12,YU12 exclusive_caps=1,1 card_label=Phone,Laptop debug=1
   '';
 
-  fileSystems."/mnt/steam/" = {
+  fileSystems."/mnt/steam" = {
     device = "/dev/disk/by-id/ata-TOSHIBA_HDWD120_Y831YZJAS-part1";
     options = [ "nofail" "compress=zstd" "noatime" "subvol=@steam" ];
     fsType = "btrfs";
